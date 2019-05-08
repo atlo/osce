@@ -250,11 +250,7 @@ const data = [
 let columnSize = 6
 let widthColumnRatio = columnSize / width * 100
 
-function calculateColumns (percentage) {
-  return Math.floor((percentage * 10) / columnSize)
-}
-
-function paginate (event) {
+function paginate (event, isFirst = false) {
   const button = event ? event.target.closest('button') : undefined
   currentPage = button ? parseInt(button.value) : currentPage + 1  
   
@@ -284,22 +280,14 @@ function paginate (event) {
     if (currentPage > 3) {
       renderViz(selected)
     } else {
-      renderPage(selected)
+      renderPage(selected, isFirst)
     }
   }
 }
 
-function renderPage (selected) {
-  const time = currentPage > 1 ? 1000 : 1
-  /* if (selected > 1) {
-    const previous = data.find(x => x.id === selected - 1)
-
-    backgroundBack.src = `images/${previous.background}`
-    backgroundBack.style.opacity = 0
-  } else {
-    backgroundFront.style.opacity = 1
-    backgroundFront.src = `images/${selected.background}`
-  } */
+function renderPage (selected, isFirst) {
+  const time = isFirst ? 0 : 800
+  console.log({isFirst, time})
 
   setTimeout(function () {
     backgroundFront.style.opacity = 1
@@ -308,7 +296,7 @@ function renderPage (selected) {
 }
 
 function renderViz (selected) {
-  const time = currentPage > 1 ? 1000 : 1
+  const time = currentPage > 1 ? 800 : 1
   
   setTimeout(function () {
     selected.columns.forEach((column, index) => {
@@ -334,17 +322,7 @@ function renderViz (selected) {
   }, time)
 }
 
-function setRectangle (ratio, color) {
-  const ratioText = `${ratio}%`
-  rectangle.style.background = color
-  rectangle.style.width = `${calculateColumns(ratio)}%`
-  text.style.left = ratioText
-  text.style.color = color
-  text.innerHTML = ratioText
-  console.log({calculated: calculateColumns(ratio)})
-}
-
 paginationButtons.forEach(button => button.addEventListener('click', paginate))
 infoGraphContainer.addEventListener('click', paginate)
 
-paginate()
+paginate(undefined, true)

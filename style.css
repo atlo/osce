@@ -33,7 +33,7 @@ button {
 }
 
 .hero h1 {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   font-size: 42px;
 }
 
@@ -71,7 +71,7 @@ button {
 .rectangle,
 .rectangle li,
 .text li {
-  transition: all ease-in-out 1s;
+  transition: all ease-in-out .8s;
 }
 
 .background {
@@ -90,7 +90,7 @@ button {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: all ease-in-out 1s;
+  transition: all ease-in-out .8s;
 }
 
 .rectangle {
