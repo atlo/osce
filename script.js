@@ -1,3 +1,4 @@
+const container = document.querySelector('#atlo')
 const infoGraphContainer = document.querySelector('.info-graph-container')
 const rectangleContainer = document.querySelector('.rectangle.active')
 const rectangles = Array.from(document.querySelectorAll('.rectangle li'))
@@ -7,8 +8,7 @@ const titleElement = document.querySelector('.hero h1')
 const descriptionElement = document.querySelector('.hero p')
 const backgroundFront = document.querySelector('.background-image')
 
-const width = infoGraphContainer.offsetWidth
-const colors = ['red', 'blue', 'yellow', 'green']
+const animationTime = 800
 
 let currentPage = 1
 
@@ -181,7 +181,6 @@ const data = [
         <p class="description">well informed</p>
         <p class="percentage">23%</p>`,
         percentage: 98,
-        textPercentage: 82,
         textAlign: 'right',
         textColor: 'white',
         color: '#fbaf17'
@@ -190,7 +189,6 @@ const data = [
         <p class="description">somewhat informed</p>
         <p class="percentage">33%</p>`,
         percentage: 75,
-        textPercentage: 53,
         textTopPosition: 5,
         textAlign: 'right',
         textColor: 'white',
@@ -201,7 +199,6 @@ const data = [
         <p class="description">not well informed</p>
         <p class="percentage">42%</p>`,
         percentage: 41.8,
-        textPercentage: 22,
         textAlign: 'right',
         textColor: 'white',
         color: '#00437b'
@@ -246,9 +243,6 @@ const data = [
   }
 ]
 
-let columnSize = 6
-let widthColumnRatio = columnSize / width * 100
-
 function paginate (event) {
   const button = event ? event.target.closest('button') : undefined
   currentPage = button ? parseInt(button.value) : currentPage + 1  
@@ -265,7 +259,6 @@ function paginate (event) {
   const selected = data.find(row => row.id === currentPage)
   
   if (selected) {
-    console.log({selected})
     backgroundFront.style.opacity = 0
     titleElement.innerHTML = selected.title
     descriptionElement.innerHTML = selected.description
@@ -288,7 +281,7 @@ function renderPage (selected) {
   setTimeout(function () {
     backgroundFront.style.opacity = 1
     backgroundFront.src = `images/${selected.background}`
-  }, 800)
+  }, animationTime)
 }
 
 function renderViz (selected) {
@@ -312,9 +305,41 @@ function renderViz (selected) {
         text[index].style.color = column.textColor
         text[index].style.background = column.color
       }
+
+      if (selected.id === 15) {
+        if (container.offsetWidth < 480) {
+          const next = selected.columns[index + 1]
+          console.log({current: column.percentage})
+          console.log({next: next ? next.percentage : undefined})
+
+          text[index].style.height = '70px'
+          text[index].style.width = `${next ?
+            column.percentage - next.percentage  : column.percentage}%`
+          text[index].style.left = `${next ? next.percentage  : 0}%`
+        } else {
+          text[index].style.left = `calc(${column.percentage - 1}% - ${text[index].offsetWidth + 10}px)`
+        }
+      }
+      
+      if (container.offsetWidth < 576 && selected.id === 4) {
+        if (column.textTopPosition) {
+          text[index].style.top = `${column.textTopPosition + 15}%`
+        }
+      }
     })
-  }, 800)
+  }, animationTime)
 }
+
+function init () {
+  const width = container.offsetWidth
+  const baseWidth = 1000
+  const baseHeight = 560
+  const baseRatio = (baseHeight / baseWidth)
+
+  infoGraphContainer.style.height = `${width * baseRatio}px`
+}
+
+init()
 
 paginationButtons.forEach(button => button.addEventListener('click', paginate))
 infoGraphContainer.addEventListener('click', paginate)
