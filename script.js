@@ -191,7 +191,7 @@ const data = [
         <p class="description">somewhat informed</p>
         <p class="percentage">33%</p>`,
         percentage: 75,
-        textPercentage: 53.5,
+        textPercentage: 53,
         textTopPosition: 5,
         textAlign: 'right',
         textColor: 'white',
