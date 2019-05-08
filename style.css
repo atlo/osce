@@ -1,0 +1,131 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.inline {
+  display: flex;
+}
+
+.hero {
+  height: 125px;
+}
+
+.hero h1 {
+  margin-bottom: 20px;
+  font-size: 42px;
+}
+
+.description {
+  font-size: 18px;
+}
+
+.info-graph-container {
+  position: relative;
+  width: 1000px;
+  height: 560px;
+}
+
+.background,
+.rectangle,
+.text,
+.rectangle li {
+  position: absolute;
+}
+
+.background,
+.rectangle,
+.text {
+  width: 100%;
+  height: 100%;
+}
+
+.rectangle li {
+  width: 0;
+  height: 100%;
+}
+
+.rectangle,
+.rectangle li,
+.text li {
+  transition: all ease-in-out 1s;
+}
+
+.background {
+  z-index: 4;
+  background: url('images/bg.png') no-repeat;
+}
+
+.rectangle {
+  z-index: 1;
+}
+
+.rectangle.base {
+  z-index: 2;
+  width: 100%;
+  background: #e6e6e6;
+}
+
+.rectangle.active {
+  z-index: 3;
+}
+
+.text {
+  z-index: 5;
+  left: 0;
+  font-family: 'Open Sans';
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.text li {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  margin-bottom: 50px;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.pagination button {
+  height: 50px;
+  width: 50px;
+  margin-top: 20px;
+  margin-right: 15px;
+  background: #e6e9ea;
+  border: 0;
+  color: #b3b3b3;
+  font-size: 21px;
+  padding: 0;
+  transition: all .3s;
+}
+
+.pagination button.active {
+  background: #666666;
+  color: #f2f2f2;
+}
+
+.pagination button svg {
+  transition: all .3s;
+}
