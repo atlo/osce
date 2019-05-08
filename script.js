@@ -303,6 +303,7 @@ function renderViz (selected) {
 
       if (column.textColor) {
         text[index].style.color = column.textColor
+        text[index].querySelector('.description').style.color = column.textColor
         text[index].style.background = column.color
       }
 
@@ -337,6 +338,12 @@ function init () {
   const baseRatio = (baseHeight / baseWidth)
 
   infoGraphContainer.style.height = `${width * baseRatio}px`
+
+  if (width < 600) {
+    container.classList.add('mobile')
+  } else if (width < 1000) {
+    container.classList.add('tablet')
+  }
 }
 
 init()

@@ -34,6 +34,7 @@
 #atlo button {
   background: none;
   border: 0;
+  border-radius: 0;
   cursor: pointer;
 }
 
@@ -50,7 +51,6 @@
 #atlo .inline {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 #atlo .hero {
@@ -103,6 +103,7 @@
 #atlo .background {
   z-index: 4;
   background: url('images/bg.png') no-repeat;
+  background-size: contain;
 }
 
 #atlo .background-image {
@@ -171,26 +172,23 @@
   transition: all .3s;
 }
 
-@media (max-width: 999px) {
-  #atlo .hero h1 {
+  #atlo.tablet .hero h1 {
     font-size: 36px;
   }
 
-  #atlo .description {
+  #atlo.tablet .description {
     font-size: 16px;
   }
 
-  #atlo .text {
-    font-size: 42px;
+  #atlo.tablet .text {
+    font-size: 40px;
   }
-}
 
-@media (max-width: 576px) {
-  #atlo .hero {
+  #atlo.mobile .hero {
     min-height: 120px;
   }
 
-  #atlo .hero h1 {
+  #atlo.mobile .hero h1 {
     font-size: 24px;
   }
 
@@ -198,11 +196,10 @@
     font-size: 13px;
   }
 
-  #atlo .text {
+  #atlo.mobile .text {
     font-size: 24px;
   }
 
-  #atlo .text li {
+  #atlo.mobile .text li {
     margin-left: 0;
   }
-}
