@@ -82,15 +82,14 @@ button {
 .background-image {
   position: absolute;
   z-index: 5;
-}
-
-.background-image .back,
-.background-image .front {
-  position: absolute;
   width: 100%;
   height: 100%;
-  opacity: 0;
+  opacity: 1;
   transition: all ease-in-out .8s;
+}
+
+.background-image .front {
+  overflow: 1px;
 }
 
 .rectangle {

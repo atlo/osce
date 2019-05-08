@@ -5,13 +5,12 @@ const text = Array.from(document.querySelectorAll('.text li'))
 const paginationButtons = Array.from(document.querySelectorAll('.pagination button'))
 const titleElement = document.querySelector('.hero h1')
 const descriptionElement = document.querySelector('.hero p')
-const backgroundBack = document.querySelector('.background-image .back')
-const backgroundFront = document.querySelector('.background-image .front')
+const backgroundFront = document.querySelector('.background-image')
 
 const width = infoGraphContainer.offsetWidth
 const colors = ['red', 'blue', 'yellow', 'green']
 
-let currentPage = 0
+let currentPage = 1
 
 const data = [
   {
@@ -250,7 +249,7 @@ const data = [
 let columnSize = 6
 let widthColumnRatio = columnSize / width * 100
 
-function paginate (event, isFirst = false) {
+function paginate (event) {
   const button = event ? event.target.closest('button') : undefined
   currentPage = button ? parseInt(button.value) : currentPage + 1  
   
@@ -280,24 +279,19 @@ function paginate (event, isFirst = false) {
     if (currentPage > 3) {
       renderViz(selected)
     } else {
-      renderPage(selected, isFirst)
+      renderPage(selected)
     }
   }
 }
 
-function renderPage (selected, isFirst) {
-  const time = isFirst ? 0 : 800
-  console.log({isFirst, time})
-
+function renderPage (selected) {
   setTimeout(function () {
     backgroundFront.style.opacity = 1
     backgroundFront.src = `images/${selected.background}`
-  }, time)
+  }, 800)
 }
 
 function renderViz (selected) {
-  const time = currentPage > 1 ? 800 : 1
-  
   setTimeout(function () {
     selected.columns.forEach((column, index) => {
       rectangles[index].style.background = column.color
@@ -319,10 +313,8 @@ function renderViz (selected) {
         text[index].style.background = column.color
       }
     })
-  }, time)
+  }, 800)
 }
 
 paginationButtons.forEach(button => button.addEventListener('click', paginate))
 infoGraphContainer.addEventListener('click', paginate)
-
-paginate(undefined, true)
