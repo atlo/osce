@@ -5,13 +5,32 @@ const text = Array.from(document.querySelectorAll('.text li'))
 const paginationButtons = Array.from(document.querySelectorAll('.pagination button'))
 const titleElement = document.querySelector('.hero h1')
 const descriptionElement = document.querySelector('.hero p')
+const backgroundBack = document.querySelector('.background-image .back')
+const backgroundFront = document.querySelector('.background-image .front')
 
 const width = infoGraphContainer.offsetWidth
 const colors = ['red', 'blue', 'yellow', 'green']
 
+let currentPage = 0
+
 const data = [
   {
     id: 1,
+    title: 'Well-being and safety of women',
+    description: 'OSCE-LED survey on violence against women - major findings',
+    background: '1.png'
+  }, {
+    id: 2,
+    title: 'Participating states',
+    description: 'A quantitative survey was conducted among a representative sample of women aged 18 to 74 living in Albania, Bosnia and Hercegovina, Kosovo, Montenegro, North Macedonia, Serbia, Moldova and Ukraine. ',
+    background: '2.png'
+  }, {
+    id: 3,
+    title: 'Methodology ',
+    description: 'A total of 15.179 female participated in the survey. Here, each dot represents one of them.',
+    background: '3.png'
+  },{
+    id: 4,
     title: 'Violent reality',
     description: 'Seventy per cent of women have experienced some form of sexual harassment since the age of 15. With 31 per cent said to have experienced sexual violence in the past 12 months. ',
     columns: [
@@ -32,7 +51,7 @@ const data = [
       }
     ]
   }, {
-    id: 2,
+    id: 5,
     title: 'When it\'s known',
     description: 'Almost quarter of the participating women said to have experienced physical or sexual violence by her partner. ',
     columns: [
@@ -45,7 +64,7 @@ const data = [
       }
     ]
   }, {
-    id: 3,
+    id: 6,
     title: 'When it\'s unknown',
     description: 'One in five women have experienced violence by a non-partner perpetrator',
     columns: [
@@ -58,7 +77,7 @@ const data = [
       }
     ]
   }, {
-    id: 4,
+    id: 7,
     title: 'Marital duty',
     description: '17% of women agree that it is a wife\'s obligation to have sex with her husband even if she doesn\'t want to',
     columns: [
@@ -70,7 +89,7 @@ const data = [
       }
     ]
   }, {
-    id: 5,
+    id: 8,
     title: 'Provocation',
     description: 'One in four agrees that the violence is often provoked by the victim',
     columns: [
@@ -82,7 +101,7 @@ const data = [
       }
     ]
   }, {
-    id: 6,
+    id: 9,
     title: 'Private matter',
     description: 'Almost third of the women agrees that domestic violence is a private matter, and should be handled within the family.',
     columns: [
@@ -94,7 +113,7 @@ const data = [
       }
     ]
   }, {
-    id: 7,
+    id: 10,
     title: 'Types of violence and abuse - physical',
     description: 'Women who have been subject to physical violence since the age of 15. ',
     columns: [
@@ -106,7 +125,7 @@ const data = [
       }
     ]
   }, {
-    id: 8,
+    id: 11,
     title: 'Types of violence and abuse - sexual',
     description: 'Women who have been subject to sexual violence since the age of 15. ',
     columns: [
@@ -118,7 +137,7 @@ const data = [
       }
     ]
   }, {
-    id: 9,
+    id: 12,
     title: 'Types of violence and abuse - psychological',
     description: 'Women who have been subject to psychological violence since the age of 15. ',
     columns: [
@@ -130,7 +149,7 @@ const data = [
       }
     ]
   }, {
-    id: 10,
+    id: 13,
     title: 'Physical injuries and psychological consequences - physical',
     description: '59% of the victims have physical injuries from the most serious incident',
     columns: [
@@ -142,7 +161,7 @@ const data = [
       }
     ]
   }, {
-    id: 11,
+    id: 14,
     title: 'Physical injuries and psychological consequences - psychological',
     description: '82% of the victims have psychological consequences from the most serious incident',
     columns: [
@@ -154,7 +173,7 @@ const data = [
       }
     ]
   }, {
-    id: 12,
+    id: 15,
     title: 'Lack of information',
     description: 'Almost half of the women don\'t know what to do after they experience violence. ',
     columns: [
@@ -190,7 +209,7 @@ const data = [
       }
     ]
   }, {
-    id: 13,
+    id: 16,
     title: 'Only one in five',
     description: 'Only one in five women who experienced violence from a non-partner went to the police to help.',
     columns: [
@@ -202,7 +221,7 @@ const data = [
       }
     ]
   }, {
-    id: 14,
+    id: 17,
     title: 'Even less',
     description: 'If the violence is done by a previous partner, even less seek the help of the police',
     columns: [
@@ -214,7 +233,7 @@ const data = [
       }
     ]
   }, {
-    id: 15,
+    id: 18,
     title: 'Almost no one',
     description: 'If the violence happens in current relationship, only about 7 out of 100 women take official steps',
     columns: [
@@ -236,16 +255,23 @@ function calculateColumns (percentage) {
 }
 
 function paginate (event) {
-  const button = event.target.closest('button')
-
-  paginationButtons.forEach(el => el.classList.remove('active'))
+  const button = event ? event.target.closest('button') : undefined
+  currentPage = button ? parseInt(button.value) : currentPage + 1  
   
-  button.classList.add('active')
+  const relatedButton = document.querySelector(`[value="${currentPage}"]`)
 
-  const selected = data.find(row => row.id === parseInt(button.value))
+  if (button || relatedButton) {
+    const selectedButton = button || relatedButton
+  
+    paginationButtons.forEach(el => el.classList.remove('active'))  
+    selectedButton.classList.add('active')
+  }
+
+  const selected = data.find(row => row.id === currentPage)
   
   if (selected) {
     console.log({selected})
+    backgroundFront.style.opacity = 0
     titleElement.innerHTML = selected.title
     descriptionElement.innerHTML = selected.description
 
@@ -255,30 +281,57 @@ function paginate (event) {
       t.style.opacity = 0
     })
     
-    setTimeout(function () {
-      selected.columns.forEach((column, index) => {
-        console.log({column})
-        rectangles[index].style.background = column.color
-        rectangles[index].style.width = `${column.percentage}%`
-        text[index].innerHTML = column.description
-        text[index].style.opacity = 1
-        text[index].style.left = `${column.textPercentage || column.percentage}%`
-  
-        if (column.textTopPosition) {
-          text[index].style.top = `${column.textTopPosition}%`
-        }
-  
-        if (column.textAlign) {
-          text[index].style.textAlign = column.textAlign
-        }
-  
-        if (column.textColor) {
-          text[index].style.color = column.textColor
-          text[index].style.background = column.color
-        }
-      })
-    }, 1000)
+    if (currentPage > 3) {
+      renderViz(selected)
+    } else {
+      renderPage(selected)
+    }
   }
+}
+
+function renderPage (selected) {
+  const time = currentPage > 1 ? 1000 : 1
+  /* if (selected > 1) {
+    const previous = data.find(x => x.id === selected - 1)
+
+    backgroundBack.src = `images/${previous.background}`
+    backgroundBack.style.opacity = 0
+  } else {
+    backgroundFront.style.opacity = 1
+    backgroundFront.src = `images/${selected.background}`
+  } */
+
+  setTimeout(function () {
+    backgroundFront.style.opacity = 1
+    backgroundFront.src = `images/${selected.background}`
+  }, time)
+}
+
+function renderViz (selected) {
+  const time = currentPage > 1 ? 1000 : 1
+  
+  setTimeout(function () {
+    selected.columns.forEach((column, index) => {
+      rectangles[index].style.background = column.color
+      rectangles[index].style.width = `${column.percentage}%`
+      text[index].innerHTML = column.description
+      text[index].style.opacity = 1
+      text[index].style.left = `${column.textPercentage || column.percentage}%`
+
+      if (column.textTopPosition) {
+        text[index].style.top = `${column.textTopPosition}%`
+      }
+
+      if (column.textAlign) {
+        text[index].style.textAlign = column.textAlign
+      }
+
+      if (column.textColor) {
+        text[index].style.color = column.textColor
+        text[index].style.background = column.color
+      }
+    })
+  }, time)
 }
 
 function setRectangle (ratio, color) {
@@ -292,3 +345,6 @@ function setRectangle (ratio, color) {
 }
 
 paginationButtons.forEach(button => button.addEventListener('click', paginate))
+infoGraphContainer.addEventListener('click', paginate)
+
+paginate()
