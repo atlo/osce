@@ -1,85 +1,111 @@
-*,
-*:before,
-*:after {
+#atlo *,
+#atlo *:before,
+#atlo *:after {
   box-sizing: border-box;
 }
 
-body {
+#atlo ol, #atlo ul {
+	list-style: none;
+}
+#atlo blockquote, #atlo q {
+	quotes: none;
+}
+#atlo blockquote:before, #atlo blockquote:after,
+#atlo q:before, #atlo q:after {
+	content: '';
+	content: none;
+}
+#atlo table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#atlo {
   font-family: 'Open Sans', sans-serif;
+  line-height: 1.2;
 }
 
-ul {
-  list-style-type: none;
+#atlo ul {
+  margin: 0;
+  list-style: none;
+  padding: 0;
 }
 
-button {
+#atlo button {
   background: none;
   border: 0;
   cursor: pointer;
 }
 
-.container {
+#atlo p {
+  margin: 0;
+}
+
+#atlo.container {
   max-width: 1000px;
   width: 100%;
   margin: 50px auto;
 }
 
-.inline {
+#atlo .inline {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.hero {
-  height: 100px;
+#atlo .hero {
+  min-height: 120px;
+  padding-bottom: 5px;
 }
 
-.hero h1 {
+#atlo .hero h1 {
   margin-bottom: 15px;
   font-size: 42px;
 }
 
-.description {
+#atlo .description {
   font-size: 18px;
 }
 
-.info-graph-container {
+#atlo .info-graph-container {
   position: relative;
-  width: 1000px;
+  width: 100%;
   height: 560px;
 }
 
-.background,
-.background-image,
-.rectangle,
-.text,
-.rectangle li {
+#atlo .background,
+#atlo .background-image,
+#atlo .rectangle,
+#atlo .text,
+#atlo .rectangle li {
   position: absolute;
 }
 
-.background,
-.background-image,
-.rectangle,
-.text {
+#atlo .background,
+#atlo .background-image,
+#atlo .rectangle,
+#atlo .text {
   width: 100%;
   height: 100%;
 }
 
-.rectangle li {
+#atlo .rectangle li {
   width: 0;
   height: 100%;
 }
 
-.rectangle,
-.rectangle li,
-.text li {
+#atlo .rectangle,
+#atlo .rectangle li,
+#atlo .text li {
   transition: all ease-in-out .8s;
 }
 
-.background {
+#atlo .background {
   z-index: 4;
   background: url('images/bg.png') no-repeat;
 }
 
-.background-image {
+#atlo .background-image {
   position: absolute;
   z-index: 5;
   width: 100%;
@@ -88,25 +114,25 @@ button {
   transition: all ease-in-out .8s;
 }
 
-.background-image .front {
+#atlo .background-image .front {
   overflow: 1px;
 }
 
-.rectangle {
+#atlo .rectangle {
   z-index: 1;
 }
 
-.rectangle.base {
+#atlo .rectangle.base {
   z-index: 2;
   width: 100%;
   background: #e6e6e6;
 }
 
-.rectangle.active {
+#atlo .rectangle.active {
   z-index: 3;
 }
 
-.text {
+#atlo .text {
   z-index: 5;
   left: 0;
   font-family: 'Open Sans';
@@ -114,7 +140,7 @@ button {
   font-weight: bold;
 }
 
-.text li {
+#atlo .text li {
   position: absolute;
   top: 5%;
   left: 0;
@@ -123,9 +149,9 @@ button {
   padding: 5px;
 }
 
-.pagination button {
-  height: 50px;
-  width: 50px;
+#atlo .pagination button {
+  height: 40px;
+  width: 40px;
   margin-top: 20px;
   margin-right: 15px;
   background: #e6e9ea;
@@ -136,11 +162,47 @@ button {
   transition: all .3s;
 }
 
-.pagination button.active {
+#atlo .pagination button.active {
   background: #666666;
   color: #f2f2f2;
 }
 
-.pagination button svg {
+#atlo .pagination button svg {
   transition: all .3s;
+}
+
+@media (max-width: 999px) {
+  #atlo .hero h1 {
+    font-size: 36px;
+  }
+
+  #atlo .description {
+    font-size: 16px;
+  }
+
+  #atlo .text {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 576px) {
+  #atlo .hero {
+    min-height: 120px;
+  }
+
+  #atlo .hero h1 {
+    font-size: 24px;
+  }
+
+  #atlo .description {
+    font-size: 13px;
+  }
+
+  #atlo .text {
+    font-size: 24px;
+  }
+
+  #atlo .text li {
+    margin-left: 0;
+  }
 }
