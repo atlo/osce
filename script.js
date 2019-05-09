@@ -3,10 +3,11 @@ const infoGraphContainer = document.querySelector('.info-graph-container')
 const rectangleContainer = document.querySelector('.rectangle.active')
 const rectangles = Array.from(document.querySelectorAll('.rectangle li'))
 const text = Array.from(document.querySelectorAll('.text li'))
-const paginationButtons = Array.from(document.querySelectorAll('.pagination button'))
 const titleElement = document.querySelector('.hero h1')
 const descriptionElement = document.querySelector('.hero p')
 const backgroundFront = document.querySelector('.background-image')
+const backButton = document.querySelector('.back-button')
+const nextButton = document.querySelector('.next-button')
 
 const animationTime = 800
 
@@ -243,19 +244,19 @@ const data = [
   }
 ]
 
-function paginate (event) {
-  const button = event ? event.target.closest('button') : undefined
-  currentPage = button ? parseInt(button.value) : currentPage + 1  
-  
-  const relatedButton = document.querySelector(`[value="${currentPage}"]`)
-
-  if (button || relatedButton) {
-    const selectedButton = button || relatedButton
-  
-    paginationButtons.forEach(el => el.classList.remove('active'))  
-    selectedButton.classList.add('active')
+function paginate (isNextPage = true) {
+  if (isNextPage && currentPage < data.length) {
+    currentPage++
+  } else if (!isNextPage && currentPage > 1) {
+    currentPage--
   }
 
+  console.log({currentPage})
+
+  currentPage === 1 ? backButton.setAttribute('disabled', true) : backButton.removeAttribute('disabled')
+  currentPage === data.length ? nextButton.setAttribute('disabled', true) : nextButton.removeAttribute('disabled')
+
+  
   const selected = data.find(row => row.id === currentPage)
   
   if (selected) {
@@ -346,7 +347,20 @@ function init () {
   }
 }
 
+function handleKeyDown (event) {
+  switch (event.keyCode) {
+    case 37:
+      paginate(false)
+      break
+    case 39:
+      paginate(true)
+      break
+  }
+}
+
 init()
 
-paginationButtons.forEach(button => button.addEventListener('click', paginate))
-infoGraphContainer.addEventListener('click', paginate)
+backButton.addEventListener('click', e => paginate(false))
+nextButton.addEventListener('click', e => paginate(true))
+infoGraphContainer.addEventListener('click', e => paginate(true))
+window.addEventListener('keydown', handleKeyDown)

@@ -51,15 +51,16 @@
 #atlo .inline {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 #atlo .hero {
-  min-height: 120px;
+  height: 135px;
   padding-bottom: 5px;
 }
 
 #atlo .hero h1 {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
   font-size: 42px;
 }
 
@@ -153,19 +154,25 @@
 #atlo .pagination button {
   height: 40px;
   width: 40px;
-  margin-top: 20px;
-  margin-right: 15px;
-  background: #e6e9ea;
-  border: 0;
-  color: #b3b3b3;
-  font-size: 21px;
+  margin-top: 15px;
   padding: 0;
   transition: all .3s;
 }
 
-#atlo .pagination button.active {
-  background: #666666;
-  color: #f2f2f2;
+#atlo .pagination button rect {
+  fill: #666666 !important;
+}
+
+#atlo .pagination button path {
+  fill: #f2f2f2 !important;
+}
+
+#atlo .pagination button:disabled rect {
+  fill: #e6e9ea !important;
+}
+
+#atlo .pagination button:disabled path {
+  fill: #b3b3b3 !important;
 }
 
 #atlo .pagination button svg {
@@ -185,11 +192,15 @@
   }
 
   #atlo.mobile .hero {
-    min-height: 120px;
+    height: 135px;
   }
 
   #atlo.mobile .hero h1 {
-    font-size: 24px;
+    font-size: 20px;
+  }
+
+  #atlo.mobile .hero p {
+    font-size: 14px;
   }
 
   #atlo .description {
