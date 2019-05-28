@@ -118,6 +118,11 @@ const descriptionElement = document.querySelector('.hero p')
 const backgroundFront = document.querySelector('.background-image')
 const backButton = document.querySelector('.back-button')
 const nextButton = document.querySelector('.next-button')
+const tooltip = document.querySelector('.tooltip')
+const tooltipButton = document.querySelector('.tooltip-button')
+const tooltipText = document.querySelector('.tooltip-text')
+const video = document.querySelector('.video')
+const content = document.querySelector('.content')
 
 const animationTime = 800
 
@@ -143,6 +148,13 @@ const data = [
     id: 4,
     title: 'Violent reality',
     description: 'Seventy per cent of women have experienced some form of sexual harassment since the age of 15. With 31 per cent said to have experienced sexual violence in the past 12 months. ',
+    cite: {
+      top: '10%',
+      left: '37.8%',
+      text: 'Lorem ipsum dolorem possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere!'
+    },
+    content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.',
+    video: 'Valentina_Andrasek.mp4',
     columns: [
       {
         description: `
@@ -164,6 +176,13 @@ const data = [
     id: 5,
     title: 'When it\'s known',
     description: 'Almost quarter of the participating women said to have experienced physical or sexual violence by her partner. ',
+    cite: {
+      top: '33.3%',
+      left: '12.2%',
+      text: 'Veniam, inventore! Harum necessitatibus tempore, beatae possimus voluptates dolorem architecto labore ducimus quo explicabo hic.'
+    },
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor velit accusamus quam. Laborum iusto fugiat ullam voluptatibus dicta placeat quae sint sed, officia fuga provident, velit quidem, labore ratione. Tenetur fugiat dolorem error, dolor provident eum eaque praesentium ex placeat aliquid facilis atque, voluptas modi aperiam necessitatibus a unde eius. Aspernatur eveniet odio architecto aliquid! Reprehenderit maxime sequi amet! Reiciendis similique tempore expedita impedit animi rerum, atque minima excepturi modi recusandae fugiat quia incidunt ipsam magnam optio beatae suscipit officia?',
+    video: 'Marija_Babovic_pt_1.mp4',
     columns: [
       {
         description: `
@@ -177,6 +196,13 @@ const data = [
     id: 6,
     title: 'When it\'s unknown',
     description: 'One in five women have experienced violence by a non-partner perpetrator',
+    cite: {
+      top: '55.3%',
+      left: '14.1%',
+      text: 'Tenetur fugiat dolorem error, dolor provident eum eaque praesentium ex placeat aliquid facilis atque, voluptas modi aperiam necessitatibus a unde eius. Aspernatur eveniet odio architecto aliquid!'
+    },
+    content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, inventore! Harum necessitatibus tempore, beatae possimus voluptates dolorem architecto labore ducimus quo explicabo hic. Labore asperiores nostrum quam dolores culpa porro, ad corrupti, explicabo fugiat repudiandae ea eius sequi, ab facilis dolorem molestiae delectus atque iusto necessitatibus nulla! Excepturi ut modi rem natus ducimus labore, dolor accusantium aliquid doloribus numquam voluptas harum quasi, placeat sunt ex unde magni porro? Explicabo perferendis fugiat quaerat fugit iste voluptate sed optio. Porro, quidem voluptates.',
+    video: 'Marija_Babovic_pt2.mp4',
     columns: [
       {
         description: `
@@ -186,7 +212,7 @@ const data = [
         color: '#70c6ad'
       }
     ]
-  }, {
+  }, /* {
     id: 7,
     title: 'Marital duty',
     description: '17% of women agree that it is a wife\'s obligation to have sex with her husband even if she doesn\'t want to',
@@ -351,10 +377,16 @@ const data = [
         color: '#fbaf17'
       }
     ]
-  }
+  } */
 ]
 
 function paginate (isNextPage = true) {
+  tooltip.classList.remove('active')
+  tooltipButton.classList.remove('active')
+  tooltipText.classList.remove('active')
+  video.innerHTML = ''
+  content.innerHTML = ''
+
   if (isNextPage && currentPage < data.length) {
     currentPage++
   } else if (!isNextPage && currentPage > 1) {
@@ -439,6 +471,30 @@ function renderViz (selected) {
         }
       }
     })
+
+    console.log({selected})
+    if (selected.cite) {
+      const {top, left, text} = selected.cite
+
+      tooltip.classList.add('active')
+
+      tooltip.style.top = top
+      tooltip.style.left = left
+      tooltipText.innerHTML = text
+    } else {
+      tooltip.classList.remove('active')
+    }
+
+    if (selected.video) {
+      video.innerHTML = `
+      <video controls>
+        <source src="videos/${selected.video}"></source>
+      </video>`
+    }
+
+    if (selected.content) {
+      content.innerHTML = selected.content
+    }
   }, animationTime)
 }
 
@@ -468,17 +524,24 @@ function handleKeyDown (event) {
   }
 }
 
+function toggleTooltip (event) {
+  event.stopPropagation()
+
+  tooltipButton.classList.toggle('active')
+  tooltipText.classList.toggle('active')
+}
+
 init()
 
 document.addEventListener('swiped-right', e => paginate(false))
 nextButton.addEventListener('click', e => {
-  console.log('swiped-right')
   paginate(true)
 })
 document.addEventListener('swiped-left', e => {
-  console.log('swiped-left')
   paginate(true)
 })
 backButton.addEventListener('click', e => paginate(false))
 infoGraphContainer.addEventListener('click', e => paginate(true))
 window.addEventListener('keydown', handleKeyDown)
+
+tooltipButton.addEventListener('click', toggleTooltip)

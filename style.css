@@ -184,38 +184,106 @@
   transition: all .3s;
 }
 
-  #atlo.tablet .hero h1 {
-    font-size: 36px;
+#atlo.tablet .hero h1 {
+  font-size: 36px;
+}
+
+#atlo.tablet .description {
+  font-size: 16px;
+}
+
+#atlo.tablet .text {
+  font-size: 40px;
+}
+
+#atlo.mobile .hero {
+  height: 135px;
+}
+
+#atlo.mobile .hero h1 {
+  font-size: 20px;
+}
+
+#atlo.mobile .hero p {
+  font-size: 14px;
+}
+
+#atlo .description {
+  font-size: 13px;
+}
+
+#atlo.mobile .text {
+  font-size: 24px;
+}
+
+#atlo.mobile .text li {
+  margin-left: 0;
+}
+
+#atlo .content {
+  margin: 50px 0;
+}
+
+#atlo video {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes alice {
+  0% {
+    transform: scale(1);
   }
 
-  #atlo.tablet .description {
-    font-size: 16px;
+  100% {
+    transform: scale(2);
   }
+}
 
-  #atlo.tablet .text {
-    font-size: 40px;
-  }
+#atlo .tooltip {
+  position: absolute;
+  z-index: 6;
+  top: 10%;
+  left: 10%;
+  opacity: 0;
+  transition: opacity .6s;
+}
 
-  #atlo.mobile .hero {
-    height: 135px;
-  }
 
-  #atlo.mobile .hero h1 {
-    font-size: 20px;
-  }
+#atlo .tooltip.active {
+  opacity: 1;
+}
+#atlo .tooltip-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 50px;
+  text-align: center;
+}
 
-  #atlo.mobile .hero p {
-    font-size: 14px;
-  }
+#atlo .tooltip-button span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  animation: alice 1s alternate infinite;
+  background: red;
+  border-radius: 50%;
+  transition: all .3s;
+}
 
-  #atlo .description {
-    font-size: 13px;
-  }
+#atlo .tooltip-button.active span {
+  animation: none;
+  transform: scale(1);
+}
 
-  #atlo.mobile .text {
-    font-size: 24px;
-  }
+#atlo .tooltip-text {
+  width: 320px;
+  background: white;
+  padding: 10px;
+  opacity: 0;
+  transition: all .6s;
+}
 
-  #atlo.mobile .text li {
-    margin-left: 0;
-  }
+#atlo .tooltip .tooltip-text.active {
+  opacity: 1;
+}
