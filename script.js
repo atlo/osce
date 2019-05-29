@@ -125,6 +125,13 @@ const tooltipDot = tooltipButton.querySelector('span')
 const video = document.querySelector('.video')
 const content = document.querySelector('.content p')
 
+const image = new Image()
+const image2 = new Image()
+const image3 = new Image()
+image.src='images/1.png'
+image2.src='images/2.png'
+image3.src='images/3.png'
+
 const animationTime = 800
 
 let currentPage = 1
@@ -530,6 +537,20 @@ function toggleTooltip (event) {
   tooltipText.classList.toggle('active')
 }
 
+function showTooltup (event) {
+  event.stopPropagation()
+
+  tooltipButton.classList.add('active')
+  tooltipText.classList.add('active')
+}
+
+function hideTooltup (event) {
+  event.stopPropagation()
+
+  tooltipButton.classList.remove('active')
+  tooltipText.classList.remove('active')
+}
+
 init()
 
 document.addEventListener('swiped-right', e => paginate(false))
@@ -544,3 +565,5 @@ infoGraphContainer.addEventListener('click', e => paginate(true))
 window.addEventListener('keydown', handleKeyDown)
 
 tooltipButton.addEventListener('click', toggleTooltip)
+tooltipButton.addEventListener('mouseenter', showTooltup)
+tooltipButton.addEventListener('mouseleave', hideTooltup)
