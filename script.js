@@ -131,7 +131,7 @@ const image3 = new Image()
 image.src='images/1.png'
 image2.src='images/2.png'
 image3.src='images/3.png'
-
+console.log(image)
 const animationTime = 800
 
 let currentPage = 1
@@ -141,17 +141,17 @@ const data = [
     id: 1,
     title: 'Well-being and safety of women',
     description: 'OSCE-LED survey on violence against women - major findings',
-    background: '1.png'
+    background: 'image-1'
   }, {
     id: 2,
     title: 'Participating states',
     description: 'A quantitative survey was conducted among a representative sample of women aged 18 to 74 living in Albania, Bosnia and Hercegovina, Kosovo, Montenegro, North Macedonia, Serbia, Moldova and Ukraine. ',
-    background: '2.png'
+    background: 'image-2'
   }, {
     id: 3,
     title: 'Methodology ',
     description: 'A total of 15.179 female participated in the survey. Here, each dot represents one of them.',
-    background: '3.png'
+    background: 'image-3'
   },{
     id: 4,
     title: 'Violent reality',
@@ -428,9 +428,14 @@ function paginate (isNextPage = true) {
 
 function renderPage (selected) {
   setTimeout(function () {
-    backgroundFront.style.opacity = 1
-    backgroundFront.src = `images/${selected.background}`
-  }, animationTime)
+    backgroundFront.classList.remove('image-1')
+    backgroundFront.classList.remove('image-2')
+    backgroundFront.classList.remove('image-3')
+    backgroundFront.classList.add(`${selected.background}`)
+    setTimeout(function () {
+      backgroundFront.style.opacity = 1
+    }, 100)
+  }, 500)
 }
 
 function renderViz (selected) {
