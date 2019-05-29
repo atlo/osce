@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+#atlo p {
+  line-height: 1.5;
+}
+
 #atlo ol, #atlo ul {
 	list-style: none;
 }
@@ -60,6 +64,7 @@
 }
 
 #atlo .hero h1 {
+  font-family: 'Merriweather', serif;
   margin-bottom: 5px;
   font-size: 42px;
 }
@@ -224,9 +229,15 @@
   margin: 50px 0;
 }
 
-#atlo video {
+#atlo .video {
   width: 100%;
   height: auto;
+  margin-bottom: 25px;
+}
+
+#atlo .content {
+  min-height: 100px;
+  transition: all .3s;
 }
 
 @keyframes alice {
@@ -235,7 +246,7 @@
   }
 
   100% {
-    transform: scale(2);
+    transform: scale(.5);
   }
 }
 
@@ -263,8 +274,8 @@
 
 #atlo .tooltip-button span {
   display: inline-block;
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height: 10px;
   animation: alice 1s alternate infinite;
   background: red;
   border-radius: 50%;
@@ -277,11 +288,46 @@
 }
 
 #atlo .tooltip-text {
-  width: 320px;
+  width: 625px;
   background: white;
-  padding: 10px;
+  -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.1);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.1);
+  padding: 15px;
   opacity: 0;
   transition: all .6s;
+}
+
+#atlo .tooltip-text p:first-of-type {
+  position: relative;
+  font-family: Merriweather, serif;
+  font-size: 21px;
+  padding-left: 40px;
+}
+
+#atlo .tooltip-text p:first-of-type:before {
+  position: absolute;
+  left: 10px;
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('images/cite_begin.svg') no-repeat;
+}
+#atlo .tooltip-text p:first-of-type:after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  background: url('images/cite_end.svg') no-repeat;
+  line-height: 2;
+}
+
+#atlo .tooltip-text p:last-of-type {
+  margin-top: 10px;
+  font-size: 15px;
+  text-align: right;
 }
 
 #atlo .tooltip .tooltip-text.active {
