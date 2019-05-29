@@ -123,7 +123,7 @@ const tooltipButton = document.querySelector('.tooltip-button')
 const tooltipText = document.querySelector('.tooltip-text')
 const tooltipDot = tooltipButton.querySelector('span')
 const video = document.querySelector('.video')
-const content = document.querySelector('.content p')
+const content = document.querySelector('.content-text')
 
 const image = new Image()
 const image2 = new Image()
@@ -161,7 +161,7 @@ const data = [
       left: '29.6%',
       text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
     },
-    content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.',
+    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
     video: 'Valentina_Andrasek.mp4',
     columns: [
       {
@@ -189,7 +189,7 @@ const data = [
       left: '12.2%',
       text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
     },
-    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor velit accusamus quam. Laborum iusto fugiat ullam voluptatibus dicta placeat quae sint sed, officia fuga provident, velit quidem, labore ratione. Tenetur fugiat dolorem error, dolor provident eum eaque praesentium ex placeat aliquid facilis atque, voluptas modi aperiam necessitatibus a unde eius. Aspernatur eveniet odio architecto aliquid! Reprehenderit maxime sequi amet! Reiciendis similique tempore expedita impedit animi rerum, atque minima excepturi modi recusandae fugiat quia incidunt ipsam magnam optio beatae suscipit officia?',
+    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
     video: 'Marija_Babovic_pt_1.mp4',
     columns: [
       {
@@ -209,7 +209,7 @@ const data = [
       left: '14%',
       text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
     },
-    content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, inventore! Harum necessitatibus tempore, beatae possimus voluptates dolorem architecto labore ducimus quo explicabo hic. Labore asperiores nostrum quam dolores culpa porro, ad corrupti, explicabo fugiat repudiandae ea eius sequi, ab facilis dolorem molestiae delectus atque iusto necessitatibus nulla! Excepturi ut modi rem natus ducimus labore, dolor accusantium aliquid doloribus numquam voluptas harum quasi, placeat sunt ex unde magni porro? Explicabo perferendis fugiat quaerat fugit iste voluptate sed optio. Porro, quidem voluptates.',
+    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
     video: 'Marija_Babovic_pt2.mp4',
     columns: [
       {
