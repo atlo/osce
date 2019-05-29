@@ -225,11 +225,11 @@
   margin-left: 0;
 }
 
-#atlo .content {
+#atlo .content p {
   margin: 50px 0;
 }
 
-#atlo .video {
+#atlo video {
   width: 100%;
   height: auto;
   margin-bottom: 25px;
