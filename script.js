@@ -134,17 +134,23 @@ const data = [
     id: 1,
     title: 'Well-being and safety of women',
     description: 'OSCE-LED survey on violence against women - major findings',
-    background: 'image-1'
+    background: 'image-1',
+    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
+    video: 'Valentina_Andrasek.mp4',
   }, {
     id: 2,
     title: 'Participating states',
     description: 'A quantitative survey was conducted among a representative sample of women aged 18 to 74 living in Albania, Bosnia and Hercegovina, Kosovo, Montenegro, North Macedonia, Serbia, Moldova and Ukraine. ',
-    background: 'image-2'
+    background: 'image-2',
+    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
+    video: 'Valentina_Andrasek.mp4',
   }, {
     id: 3,
     title: 'Methodology ',
     description: 'A total of 15.179 female participated in the survey. Here, each dot represents one of them.',
-    background: 'image-3'
+    background: 'image-3',
+    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
+    video: 'Valentina_Andrasek.mp4',
   },{
     id: 4,
     title: 'Violent reality',
@@ -416,6 +422,17 @@ function paginate (isNextPage = true) {
     } else {
       renderPage(selected)
     }
+
+    if (selected.video) {
+      video.innerHTML = `
+      <video controls>
+        <source src="videos/${selected.video}"></source>
+      </video>`
+    }
+
+    if (selected.content) {
+      content.innerHTML = selected.content
+    }
   }
 }
 
@@ -486,17 +503,6 @@ function renderViz (selected) {
         tooltip.classList.remove('active')
       }
     }, 600)
-
-    if (selected.video) {
-      video.innerHTML = `
-      <video controls>
-        <source src="videos/${selected.video}"></source>
-      </video>`
-    }
-
-    if (selected.content) {
-      content.innerHTML = selected.content
-    }
   }, animationTime)
 }
 
