@@ -150,8 +150,8 @@ const data = [
     title: 'Violent reality',
     description: 'Seventy per cent of women have experienced some form of sexual harassment since the age of 15. With 31 per cent said to have experienced sexual violence in the past 12 months. ',
     cite: {
-      top: '52.5%',
-      left: '29.6%',
+      top: '52.6%',
+      left: '29.7%',
       text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
     },
     content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
@@ -178,7 +178,7 @@ const data = [
     title: 'When it\'s known',
     description: 'Almost quarter of the participating women said to have experienced physical or sexual violence by her partner. ',
     cite: {
-      top: '33.6%',
+      top: '33.7%',
       left: '12.2%',
       text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
     },
@@ -198,7 +198,7 @@ const data = [
     title: 'When it\'s unknown',
     description: 'One in five women have experienced violence by a non-partner perpetrator',
     cite: {
-      top: '55.8%',
+      top: '55.9%',
       left: '14%',
       text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
     },
