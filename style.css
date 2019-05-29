@@ -117,8 +117,9 @@
   z-index: 5;
   width: 100%;
   height: 100%;
+  background: url('images/sprite.png') no-repeat;
   opacity: 1;
-  transition: all ease-in-out .8s;
+  transition: opacity ease-in-out .8s;
 }
 
 #atlo .background-image .front {
@@ -338,6 +339,6 @@
   opacity: 1;
 }
 
-.image-1 { background: url('images/1.png') no-repeat; }
-.image-2 { background: url('images/2.png') no-repeat; }
-.image-3 { background: url('images/3.png') no-repeat; }
+#atlo .background-image.image-1 { background-position: 0 0}
+#atlo .background-image.image-2 { background-position: 0 -560px}
+#atlo .background-image.image-3 { background-position: 0 -1120px}

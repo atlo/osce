@@ -125,13 +125,6 @@ const tooltipDot = tooltipButton.querySelector('span')
 const video = document.querySelector('.video')
 const content = document.querySelector('.content-text')
 
-const image = new Image()
-const image2 = new Image()
-const image3 = new Image()
-image.src='images/1.png'
-image2.src='images/2.png'
-image3.src='images/3.png'
-console.log(image)
 const animationTime = 800
 
 let currentPage = 1
@@ -432,10 +425,8 @@ function renderPage (selected) {
     backgroundFront.classList.remove('image-2')
     backgroundFront.classList.remove('image-3')
     backgroundFront.classList.add(`${selected.background}`)
-    setTimeout(function () {
-      backgroundFront.style.opacity = 1
-    }, 100)
-  }, 500)
+    backgroundFront.style.opacity = 1
+  }, animationTime)
 }
 
 function renderViz (selected) {
