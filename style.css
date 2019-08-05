@@ -1,3 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url(fonts/MYRIADPRO-REGULAR.woff);
+}
+
+body {
+  margin: 0;
+}
+
+.container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+svg#svg8532 {
+  position: relative;
+  width: 165%;
+  height: 264%;
+  right: 37%;
+  margin-bottom: 30px;
+}
+
 #atlo *,
 #atlo *:before,
 #atlo *:after {
@@ -46,19 +73,13 @@
   margin: 0;
 }
 
-#atlo.container {
-  max-width: 1000px;
-  width: 100%;
-  margin: 50px auto;
-}
-
 #atlo .inline {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-#atlo .hero {
+#atlo .text {
   height: 135px;
   padding-bottom: 5px;
 }
@@ -138,14 +159,6 @@
 
 #atlo .rectangle.active {
   z-index: 3;
-}
-
-#atlo .text {
-  z-index: 5;
-  left: 0;
-  font-family: 'Open Sans';
-  font-size: 60px;
-  font-weight: bold;
 }
 
 #atlo .text li {
@@ -238,6 +251,7 @@
   width: 100%;
   height: auto;
   margin-bottom: 25px;
+  margin-top: 25px;
 }
 
 #atlo .content {
@@ -342,3 +356,57 @@
 #atlo .background-image.image-1 { background-position: 0 0}
 #atlo .background-image.image-2 { background-position: 0 -560px}
 #atlo .background-image.image-3 { background-position: 0 -1120px}
+
+.slider {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 48%;
+}
+
+.slider li div {
+  width: 24px;
+  height: 55px;
+  background: url(images/woman_gray.svg) no-repeat;
+  transition: background .5s;
+}
+
+.slider .left div.highlighted {
+  background: url(images/woman_red.svg) no-repeat;
+}
+
+.slider .right div.highlighted {
+  background: url(images/woman_orange.svg) no-repeat;
+}
+
+.action {
+  filter: brightness(50%)
+}
+
+.slider-container {
+  position: relative;
+}
+
+#atlo .percentage {
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  font-family: 'Open Sans';
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.left-number {
+  left: 22%;
+  color: #C0262C;
+}
+
+.right-number {
+  left: 88%;
+  color: #FAAE1F;
+}

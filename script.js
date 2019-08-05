@@ -1,534 +1,184 @@
-/*!
- * swiped-events.js - v@version@
- * Pure JavaScript swipe events
- * https://github.com/john-doherty/swiped-events
- * @inspiration https://stackoverflow.com/questions/16348031/disable-scrolling-when-touch-moving-certain-element
- * @author John Doherty <www.johndoherty.info>
- * @license MIT
- */
-(function (window, document) {
-
-  'use strict';
-
-  // patch CustomEvent to allow constructor creation (IE/Chrome)
-  if (typeof window.CustomEvent !== 'function') {
-
-      window.CustomEvent = function (event, params) {
-
-          params = params || { bubbles: false, cancelable: false, detail: undefined };
-
-          var evt = document.createEvent('CustomEvent');
-          evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-          return evt;
-      };
-
-      window.CustomEvent.prototype = window.Event.prototype;
-  }
-
-  document.addEventListener('touchstart', handleTouchStart, false);
-  document.addEventListener('touchmove', handleTouchMove, false);
-  document.addEventListener('touchend', handleTouchEnd, false);
-
-  var xDown = null;
-  var yDown = null;
-  var xDiff = null;
-  var yDiff = null;
-  var timeDown = null;
-  var startEl = null;
-
-  function handleTouchEnd(e) {
-
-      // if the user released on a different target, cancel!
-      if (startEl !== e.target) return;
-
-      var swipeThreshold = parseInt(startEl.getAttribute('data-swipe-threshold') || '20', 10);    // default 10px
-      var swipeTimeout = parseInt(startEl.getAttribute('data-swipe-timeout') || '500', 10);      // default 1000ms
-      var timeDiff = Date.now() - timeDown;
-      var eventType = '';
-
-      if (Math.abs(xDiff) > Math.abs(yDiff)) { // most significant
-          if (Math.abs(xDiff) > swipeThreshold && timeDiff < swipeTimeout) {
-              if (xDiff > 0) {
-                  eventType = 'swiped-left';
-              }
-              else {
-                  eventType = 'swiped-right';
-              }
-          }
-      }
-      else {
-          if (Math.abs(yDiff) > swipeThreshold && timeDiff < swipeTimeout) {
-              if (yDiff > 0) {
-                  eventType = 'swiped-up';
-              }
-              else {
-                  eventType = 'swiped-down';
-              }
-          }
-      }
-
-      if (eventType !== '') {
-
-          // fire event on the element that started the swipe
-          startEl.dispatchEvent(new CustomEvent(eventType, { bubbles: true, cancelable: true }));
-
-          // if (console && console.log) console.log(eventType + ' fired on ' + startEl.tagName);
-      }
-
-      // reset values
-      xDown = null;
-      yDown = null;
-      timeDown = null;
-  }
-
-  function handleTouchStart(e) {
-
-      // if the element has data-swipe-ignore="true" we stop listening for swipe events
-      if (e.target.getAttribute('data-swipe-ignore') === 'true') return;
-
-      startEl = e.target;
-
-      timeDown = Date.now();
-      xDown = e.touches[0].clientX;
-      yDown = e.touches[0].clientY;
-      xDiff = 0;
-      yDiff = 0;
-  }
-
-  function handleTouchMove(e) {
-
-      if (!xDown || !yDown) return;
-
-      var xUp = e.touches[0].clientX;
-      var yUp = e.touches[0].clientY;
-
-      xDiff = xDown - xUp;
-      yDiff = yDown - yUp;
-  }
-
-}(window, document));
 
 const container = document.querySelector('#atlo')
-const infoGraphContainer = document.querySelector('.info-graph-container')
-const rectangleContainer = document.querySelector('.rectangle.active')
-const rectangles = Array.from(document.querySelectorAll('.rectangle li'))
-const text = Array.from(document.querySelectorAll('.text li'))
-const titleElement = document.querySelector('.hero h1')
-const descriptionElement = document.querySelector('.hero p')
-const backgroundFront = document.querySelector('.background-image')
 const backButton = document.querySelector('.back-button')
 const nextButton = document.querySelector('.next-button')
 const tooltip = document.querySelector('.tooltip')
-const tooltipButton = document.querySelector('.tooltip-button')
 const tooltipText = document.querySelector('.tooltip-text')
-const tooltipDot = tooltipButton.querySelector('span')
-const video = document.querySelector('.video')
-const content = document.querySelector('.content-text')
+const textTitle = document.querySelector('.content-text h2')
+const textParagraph = document.querySelector('.content-text p')
+const video = document.querySelector('video')
+const leftNumber = document.querySelector('.left-number')
+const rightNumber = document.querySelector('.right-number')
 
 const animationTime = 800
 
-let currentPage = 1
+let currentPage = 0
 
 const data = [
   {
     id: 1,
-    title: 'Well-being and safety of women',
-    description: 'OSCE-LED survey on violence against women - major findings',
-    background: 'image-1',
-    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
+    title: 'Lorem ipsum #1',
+    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
     video: 'Valentina_Andrasek.mp4',
+    left: {
+      percentage: 24,
+      tooltip: {
+        position: 17,
+        text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
+      }
+    },
+    right: {
+      percentage: 13
+    }
   }, {
     id: 2,
-    title: 'Participating states',
-    description: 'A quantitative survey was conducted among a representative sample of women aged 18 to 74 living in Albania, Bosnia and Hercegovina, Kosovo, Montenegro, North Macedonia, Serbia, Moldova and Ukraine. ',
-    background: 'image-2',
-    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
-    video: 'Valentina_Andrasek.mp4',
+    title: 'Lorem ipsum #2',
+    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
+    video: 'Marija_Babovic_pt_1.mp4',
+    left: {
+      percentage: 33
+    },
+    right: {
+      percentage: 43,
+      tooltip: {
+        position: 21,
+        text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
+      }
+    }
   }, {
     id: 3,
-    title: 'Methodology ',
-    description: 'A total of 15.179 female participated in the survey. Here, each dot represents one of them.',
-    background: 'image-3',
-    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
-    video: 'Valentina_Andrasek.mp4',
-  },{
-    id: 4,
-    title: 'Violent reality',
-    description: 'Seventy per cent of women have experienced some form of sexual harassment since the age of 15. With 31 per cent said to have experienced sexual violence in the past 12 months. ',
-    cite: {
-      top: '52.6%',
-      left: '29.7%',
-      text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
-    },
-    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
-    video: 'Valentina_Andrasek.mp4',
-    columns: [
-      {
-        description: `
-        <p class="description">since the age of 15</p>
-        <p class="percentage" style="color: #7c3593">70%</p>`,
-        percentage: 70,
-        color: '#7c3593'
-      }, {
-        description: `
-        <p class="description">12 months prior the survey</p>
-        <p class="percentage" style="color: #b086be">31%</p>`,
-        percentage: 31.2,
-        textPercentage: 70,
-        textTopPosition: 30,
-        color: '#b086be'
-      }
-    ]
-  }, {
-    id: 5,
-    title: 'When it\'s known',
-    description: 'Almost quarter of the participating women said to have experienced physical or sexual violence by her partner. ',
-    cite: {
-      top: '33.7%',
-      left: '12.2%',
-      text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
-    },
-    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
-    video: 'Marija_Babovic_pt_1.mp4',
-    columns: [
-      {
-        description: `
-        <p class="description">partner</p>
-        <p class="percentage" style="color: #70c6ad">70%</p>`,
-        percentage: 23,
-        color: '#70c6ad'
-      }
-    ]
-  }, {
-    id: 6,
-    title: 'When it\'s unknown',
-    description: 'One in five women have experienced violence by a non-partner perpetrator',
-    cite: {
-      top: '55.9%',
-      left: '14%',
-      text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
-    },
-    content: '<h2>Lorem ipsum dolor sit</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis aut quasi sit consequatur ut voluptate iure modi, possimus dignissimos assumenda inventore minima obcaecati architecto suscipit asperiores aperiam, repellat quis consectetur reiciendis ex distinctio ipsam qui saepe facere! Unde neque recusandae consequuntur fuga reiciendis tenetur, quas modi accusamus, nihil corporis ratione quod totam sunt amet atque sed harum, maxime ducimus consectetur alias illo! Non, velit optio numquam asperiores blanditiis consequuntur officiis dolorem nisi excepturi libero quo, doloribus ipsum laborum aperiam magni.</p>',
+    title: 'Lorem ipsum #3',
+    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
     video: 'Marija_Babovic_pt2.mp4',
-    columns: [
-      {
-        description: `
-        <p class="description">non-partner</p>
-        <p class="percentage" style="color: #70c6ad">19%</p>`,
-        percentage: 18.8,
-        color: '#70c6ad'
-      }
-    ]
-  }, /* {
-    id: 7,
-    title: 'Marital duty',
-    description: '17% of women agree that it is a wife\'s obligation to have sex with her husband even if she doesn\'t want to',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #70c6ad">17%</p>`,
-        percentage: 17,
-        color: '#70c6ad'
-      }
-    ]
+    left: {
+      percentage: 17
+    },
+    right: {
+      percentage: 23
+    }
   }, {
-    id: 8,
-    title: 'Provocation',
-    description: 'One in four agrees that the violence is often provoked by the victim',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #70c6ad">25%</p>`,
-        percentage: 25,
-        color: '#70c6ad'
+    id: 3,
+    title: 'Lorem ipsum #4',
+    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
+    video: 'Valentina_Andrasek.mp4',
+    left: {
+      percentage: 41,
+      tooltip: {
+        position: 36,
+        text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
       }
-    ]
-  }, {
-    id: 9,
-    title: 'Private matter',
-    description: 'Almost third of the women agrees that domestic violence is a private matter, and should be handled within the family.',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #70c6ad">30%</p>`,
-        percentage: 30,
-        color: '#70c6ad'
-      }
-    ]
-  }, {
-    id: 10,
-    title: 'Types of violence and abuse - physical',
-    description: 'Women who have been subject to physical violence since the age of 15. ',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #00437b">21%</p>`,
-        percentage: 21.2,
-        color: '#00437b'
-      }
-    ]
-  }, {
-    id: 11,
-    title: 'Types of violence and abuse - sexual',
-    description: 'Women who have been subject to sexual violence since the age of 15. ',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #00437b">6%</p>`,
-        percentage: 6.3,
-        color: '#00437b'
-      }
-    ]
-  }, {
-    id: 12,
-    title: 'Types of violence and abuse - psychological',
-    description: 'Women who have been subject to psychological violence since the age of 15. ',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #00437b">47%</p>`,
-        percentage: 46.9,
-        color: '#00437b'
-      }
-    ]
-  }, {
-    id: 13,
-    title: 'Physical injuries and psychological consequences - physical',
-    description: '59% of the victims have physical injuries from the most serious incident',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #7c3593">59%</p>`,
-        percentage: 58.7,
-        color: '#7c3593'
-      }
-    ]
-  }, {
-    id: 14,
-    title: 'Physical injuries and psychological consequences - psychological',
-    description: '82% of the victims have psychological consequences from the most serious incident',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #7c3593">82%</p>`,
-        percentage: 81.8,
-        color: '#7c3593'
-      }
-    ]
-  }, {
-    id: 15,
-    title: 'Lack of information',
-    description: 'Almost half of the women don\'t know what to do after they experience violence. ',
-    columns: [
-      {
-        description: `
-        <p class="description">well informed</p>
-        <p class="percentage">23%</p>`,
-        percentage: 98,
-        textAlign: 'right',
-        textColor: 'white',
-        color: '#fbaf17'
-      }, {
-        description: `
-        <p class="description">somewhat informed</p>
-        <p class="percentage">33%</p>`,
-        percentage: 75,
-        textTopPosition: 5,
-        textAlign: 'right',
-        textColor: 'white',
-        color: '#668eb0'
-      },
-      {
-        description: `
-        <p class="description">not well informed</p>
-        <p class="percentage">42%</p>`,
-        percentage: 41.8,
-        textAlign: 'right',
-        textColor: 'white',
-        color: '#00437b'
-      }
-    ]
-  }, {
-    id: 16,
-    title: 'Only one in five',
-    description: 'Only one in five women who experienced violence from a non-partner went to the police to help.',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #fbaf17">19%</p>`,
-        percentage: 18.8,
-        color: '#fbaf17'
-      }
-    ]
-  }, {
-    id: 17,
-    title: 'Even less',
-    description: 'If the violence is done by a previous partner, even less seek the help of the police',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #fbaf17">15%</p>`,
-        percentage: 15,
-        color: '#fbaf17'
-      }
-    ]
-  }, {
-    id: 18,
-    title: 'Almost no one',
-    description: 'If the violence happens in current relationship, only about 7 out of 100 women take official steps',
-    columns: [
-      {
-        description: `
-        <p class="percentage" style="color: #fbaf17">7%</p>`,
-        percentage: 7,
-        color: '#fbaf17'
-      }
-    ]
-  } */
+    },
+    right: {
+      percentage: 3
+    }
+  }
 ]
 
-function paginate (isNextPage = true) {
-  tooltip.classList.remove('active')
-  tooltipButton.classList.remove('active')
-  tooltipText.classList.remove('active')
-  video.innerHTML = ''
-  content.innerHTML = ''
+function range (length) {
+  return Array.from({length}, (v, i) => i + 1)
+}
 
-  if (isNextPage && currentPage < data.length) {
-    currentPage++
-  } else if (!isNextPage && currentPage > 1) {
-    currentPage--
+function calculateRowsAndColumns (percentage) {
+  const columns = Math.floor(percentage / 5)
+  const rows = percentage % 5
+
+  return {
+    columns,
+    rows
   }
+}
 
-  currentPage === 1 ? backButton.setAttribute('disabled', true) : backButton.removeAttribute('disabled')
-  currentPage === data.length ? nextButton.setAttribute('disabled', true) : nextButton.removeAttribute('disabled')
+function setHighlightedElements (group, {columns, rows}) {
+  Array
+    .from(document.querySelectorAll(`.${group} div`))
+    .forEach(el => el.classList.remove('highlighted'))
 
-  
-  const selected = data.find(row => row.id === currentPage)
-  
-  if (selected) {
-    backgroundFront.style.opacity = 0
-    titleElement.innerHTML = selected.title
-    descriptionElement.innerHTML = selected.description
-
-    rectangles.forEach(rectangle => rectangle.style.width = 0)
-    text.forEach(t => {
-      t.removeAttribute('style')
-      t.style.opacity = 0
-    })
-    
-    if (currentPage > 3) {
-      renderViz(selected)
+  if (columns > 0) {
+    if (group === 'left') {
+      range(columns).forEach((item, index) => {
+        Array
+          .from(document.querySelectorAll(`.${group} li:nth-of-type(${20 - index}) div`))
+          .forEach(el => el.classList.add('highlighted'))
+      })
     } else {
-      renderPage(selected)
+      range(columns).forEach(item => {
+        Array
+          .from(document.querySelectorAll(`.${group} li:nth-of-type(${item}) div`))
+          .forEach(el => el.classList.add('highlighted'))
+      })
     }
+  }
 
-    if (selected.video) {
-      video.innerHTML = `
-      <video controls>
-        <source src="videos/${selected.video}"></source>
-      </video>`
-    }
-
-    if (selected.content) {
-      content.innerHTML = selected.content
+  if (rows > 0) {
+    if (group === 'left') {
+      range(rows).forEach((_item, index) => {
+        Array
+          .from(document.querySelectorAll(`.${group} li:nth-of-type(${20 - columns}) div:nth-of-type(${5 - index})`))
+          .forEach(el => el.classList.add('highlighted'))
+      })
+    } else {
+      range(rows).forEach((_item, index) => {
+        Array
+          .from(document.querySelectorAll(`.${group} li:nth-of-type(${columns + 1}) div:nth-of-type(${5 - index})`))
+          .forEach(el => el.classList.add('highlighted'))
+      })
     }
   }
 }
 
-function renderPage (selected) {
-  setTimeout(function () {
-    backgroundFront.classList.remove('image-1')
-    backgroundFront.classList.remove('image-2')
-    backgroundFront.classList.remove('image-3')
-    backgroundFront.classList.add(`${selected.background}`)
-    backgroundFront.style.opacity = 1
-  }, animationTime)
+function setToolTip (group, column, row) {
+  document
+    .querySelector(`.${group} li:nth-of-type(${column}) div:nth-of-type(${5 - row})`)
+    .classList.add('action')
 }
 
-function renderViz (selected) {
-  setTimeout(function () {
-    selected.columns.forEach((column, index) => {
-      rectangles[index].style.background = column.color
-      rectangles[index].style.width = `${column.percentage}%`
-      text[index].innerHTML = column.description
-      text[index].style.opacity = 1
-      text[index].style.left = `${column.textPercentage || column.percentage}%`
+function paginate (isNext) {
+  tooltip.classList.remove('active')
+  tooltipText.classList.remove('active')
 
-      if (column.textTopPosition) {
-        text[index].style.top = `${column.textTopPosition}%`
-      }
+  Array
+    .from(document.querySelectorAll('.slider div.action'))
+    .forEach(el => el.classList.remove('action'))
 
-      if (column.textAlign) {
-        text[index].style.textAlign = column.textAlign
-      }
-
-      if (column.textColor) {
-        text[index].style.color = column.textColor
-        text[index].querySelector('.description').style.color = column.textColor
-        text[index].style.background = column.color
-      }
-
-      if (selected.id === 15) {
-        if (container.offsetWidth < 480) {
-          const next = selected.columns[index + 1]
-
-          text[index].style.height = '70px'
-          text[index].style.width = `${next ?
-            column.percentage - next.percentage  : column.percentage}%`
-          text[index].style.left = `${next ? next.percentage  : 0}%`
-        } else {
-          text[index].style.left = `calc(${column.percentage - 1}% - ${text[index].offsetWidth + 10}px)`
-        }
-      }
-      
-      if (container.offsetWidth < 576 && selected.id === 4) {
-        if (column.textTopPosition) {
-          text[index].style.top = `${column.textTopPosition + 15}%`
-        }
-      }
-    })
-    
-    setTimeout(function () {
-      if (selected.cite) {
-        const {top, left, text} = selected.cite
-  
-        tooltip.classList.add('active')
-  
-        tooltip.style.top = top
-        tooltip.style.left = left
-        tooltipText.innerHTML = text
-        tooltipDot.style.background = selected.columns[0].color
-      } else {
-        tooltip.classList.remove('active')
-      }
-    }, 600)
-  }, animationTime)
-}
-
-function init () {
-  const width = container.offsetWidth
-  const baseWidth = 1000
-  const baseHeight = 560
-  const baseRatio = (baseHeight / baseWidth)
-
-  infoGraphContainer.style.height = `${width * baseRatio}px`
-
-  if (width < 600) {
-    container.classList.add('mobile')
-  } else if (width < 1000) {
-    container.classList.add('tablet')
+  if (isNext) {
+    currentPage = currentPage === data.length - 1 ? currentPage : currentPage += 1
+  } else {
+    currentPage = currentPage === 0 ? currentPage : currentPage - 1
   }
-}
 
-function handleKeyDown (event) {
-  switch (event.keyCode) {
-    case 37:
-      paginate(false)
-      break
-    case 39:
-      paginate(true)
-      break
+  const selected = data[currentPage]
+  const {left, right} = selected
+
+  textTitle.innerHTML = selected.title
+  textParagraph.innerHTML = selected.description
+  
+  setHighlightedElements('left', calculateRowsAndColumns(left.percentage))
+  setHighlightedElements('right', calculateRowsAndColumns(right.percentage))
+
+  leftNumber.innerHTML = `${selected.left.percentage}%`
+  leftNumber.style.left = `${33 - selected.left.percentage / 2}%`
+  rightNumber.innerHTML = `${selected.right.percentage}%`
+  rightNumber.style.left = `${54 + selected.right.percentage / 2}%`
+
+  video.innerHTML = `
+  <video controls>
+    <source src="videos/${selected.video}"></source>
+  </video>`
+
+  if (left.tooltip) {
+    const {columns, rows} = calculateRowsAndColumns(left.tooltip.position)
+    setToolTip('left', 20 - columns, rows - 1)
+
+    tooltip.classList.add('active')
+    tooltipText.innerHTML = tooltip.text
+  }
+
+  if (right.tooltip) {
+    const {columns, rows} = calculateRowsAndColumns(right.tooltip.position)
+    setToolTip('right', columns + 1, rows - 1)
+
+    tooltip.classList.add('active')
+    tooltipText.innerHTML = tooltip.text
   }
 }
 
@@ -553,19 +203,10 @@ function hideTooltup (event) {
   tooltipText.classList.remove('active')
 }
 
-init()
-
-document.addEventListener('swiped-right', e => paginate(false))
-nextButton.addEventListener('click', e => {
-  paginate(true)
-})
-document.addEventListener('swiped-left', e => {
-  paginate(true)
-})
+paginate(false)
 backButton.addEventListener('click', e => paginate(false))
-infoGraphContainer.addEventListener('click', e => paginate(true))
-window.addEventListener('keydown', handleKeyDown)
+nextButton.addEventListener('click', e => paginate(true))
 
-tooltipButton.addEventListener('click', toggleTooltip)
+/* tooltipButton.addEventListener('click', toggleTooltip)
 tooltipButton.addEventListener('mouseenter', showTooltup)
-tooltipButton.addEventListener('mouseleave', hideTooltup)
+tooltipButton.addEventListener('mouseleave', hideTooltup) */
