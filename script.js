@@ -331,11 +331,14 @@ function paginate (isNext) {
   textTitle.innerHTML = selected.title
   textParagraph.innerHTML = selected.description
   
-  setHighlightedElements('left', calculateRowsAndColumns(left.percentage))
-  setHighlightedElements('right', calculateRowsAndColumns(right.percentage))
+  const leftPositions = calculateRowsAndColumns(left.percentage)
+  const rightPositions = calculateRowsAndColumns(right.percentage)
 
+  setHighlightedElements('left', leftPositions)
+  setHighlightedElements('right', rightPositions)
+  console.log(leftPositions.columns, rightNumber.offsetWidth)
   leftNumber.innerHTML = `${selected.left.percentage}%`
-  /* leftNumber.style.left = `${40 - selected.left.percentage / 2}%` */
+  /* leftNumber.style.left = `calc(${(20leftPositions.columns) * 2.5}% + ${leftNumber.offsetWidth}px)` */
   rightNumber.innerHTML = `${selected.right.percentage}%`
   rightNumber.style.left = `calc(100% - ${rightNumber.offsetWidth}px)`
 

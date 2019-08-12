@@ -17,7 +17,7 @@ body {
   overflow: hidden;
 }
 
-svg#svg8532 {
+svg#svg3581 {
   position: relative;
   width: 165%;
   height: 264%;
@@ -428,12 +428,11 @@ svg#svg8532 {
 }
 
 .left-number {
-  left: 0;
   color: #C0262C;
 }
 
 .right-number {
-  left: calc(100% - 48px);
+  left: calc(100% - 42px);
   color: #FAAE1F;
 }
 
