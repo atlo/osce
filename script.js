@@ -10,6 +10,10 @@ const textParagraph = document.querySelector('.content-text p')
 const video = document.querySelector('video')
 const leftNumber = document.querySelector('.left-number')
 const rightNumber = document.querySelector('.right-number')
+const leftRiver = Array.from(document.querySelectorAll('.left'))
+const left2River = Array.from(document.querySelectorAll('.left-2'))
+const rightRiver = Array.from(document.querySelectorAll('.right'))
+const right2River = Array.from(document.querySelectorAll('.right-2'))
 
 const animationTime = 800
 
@@ -327,6 +331,11 @@ function paginate (isNext) {
 
   const selected = data[currentPage]
   const {left, right} = selected
+
+  leftRiver.forEach(el => el.style.strokeWidth = left.percentage * 2)
+  rightRiver.forEach(el => el.style.strokeWidth = right.percentage* 2)
+  left2River.forEach(el => el.style.strokeWidth = (100 - left.percentage) * 2)
+  right2River.forEach(el => el.style.strokeWidth = (100 - right.percentage) * 2)
 
   textTitle.innerHTML = selected.title
   textParagraph.innerHTML = selected.description

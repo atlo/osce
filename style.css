@@ -436,6 +436,13 @@ svg#svg3581 {
   color: #FAAE1F;
 }
 
+.left,
+.left-2,
+.right,
+.right-2 {
+  transition: stroke-width 1s;
+}
+
 @media (max-width: 1000px) {
   .slider {
     flex-wrap: wrap;
