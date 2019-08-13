@@ -443,6 +443,15 @@ svg#svg3581 {
   transition: stroke-width 1s;
 }
 
+text.text {
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+text.text.active {
+  opacity: 1;
+}
+
 @media (max-width: 1000px) {
   .slider {
     flex-wrap: wrap;
