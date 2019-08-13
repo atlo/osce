@@ -20,7 +20,7 @@ const countries = ['ukraine', 'moldova', 'serbia', 'kosovo', 'macedonia', 'alban
 
 countries.forEach(country => {
   Array
-    .from(document.querySelectorAll(`.${country}`))
+    .from(document.querySelectorAll(`.${country}.affected`))
     .forEach(el => {
       el.addEventListener('mouseenter', e => showText(country))
       el.addEventListener('mouseleave', e => hideText(country))
@@ -28,23 +28,27 @@ countries.forEach(country => {
 })
 
 function showText(country) {
-  console.log(window.scrollY)
+  if (country === 'bosnia') {
+    document.querySelector('.bosnia-text tspan').setAttribute('y', window.scrollY + 21.6)
+  }
+  console.log('show')
   Array
     .from(document.querySelectorAll(`.${country}-text`))
     .forEach(el => {
       el.classList.add('active')
-      /* el.setAttribute('y', window.scrollY) */
+      el.setAttribute('y', window.scrollY)
     })
 }
 
 function hideText (country) {
+  console.log('hide')
   Array
     .from(document.querySelectorAll(`.${country}-text`))
     .forEach(el => {
       el.classList.remove('active')
-      /* setTimeout(function () {
+      setTimeout(function () {
         el.setAttribute('y', 0)
-      }, 300) */
+      }, 300)
     })
 }
 
