@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   data-name="vonal_bontva"
+   width="1918.93"
+   height="2473.28"
+   version="1.1"
+   id="svg32"
+   sodipodi:docname="lolwut (copy).svg"
+   inkscape:version="0.92.4 (unknown)">
+  <metadata
+     id="metadata38">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs36" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
+     id="namedview34"
+     showgrid="false"
+     inkscape:zoom="0.53977616"
+     inkscape:cx="1238.491"
+     inkscape:cy="987.34135"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg32" />
+  <path
+     class="ukraine affected"
+     d="M1155.13 0v1300.58a40.12 40.12 0 0 1-40 40H736.88a40.12 40.12 0 0 0-40 40v330.56"
+     fill="none"
+     stroke="#f0f"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path2"
+     style="stroke:#faaf16;stroke-opacity:1" />
+  <path
+     class="serbia affected"
+     d="M748.26 353.84h139a40.12 40.12 0 0 1 40 40v796.15a40.12 40.12 0 0 1-40 40h-185a40.12 40.12 0 0 0-40 40v441.15"
+     fill="none"
+     stroke="#f0f"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path4"
+     style="stroke:#faaf16;stroke-opacity:1" />
+  <path
+     class="moldova affected"
+     d="M1033.53 145.32v1100a40.12 40.12 0 0 1-40 40h-274a40.12 40.12 0 0 0-40 40v385.82"
+     fill="none"
+     stroke="#f0f"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path6"
+     style="stroke:#faaf16;stroke-opacity:1" />
+  <path
+     class="kosovo affected"
+     d="M766.17 451.03h60.1a40.12 40.12 0 0 1 40 40v643.66a40.12 40.12 0 0 1-40 40H684.89a40.12 40.12 0 0 0-40 40v496.45"
+     fill="none"
+     stroke="#f0f"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path8"
+     style="stroke:#faaf16;stroke-opacity:1" />
+  <path
+     class="macedonia affected"
+     d="M812.22 513.75v565.64a40.12 40.12 0 0 1-40 40H667.55a40.12 40.12 0 0 0-40 40v551.75"
+     fill="none"
+     stroke="#f0f"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path10"
+     style="stroke:#faaf16;stroke-opacity:1" />
+  <path
+     class="albania affected"
+     d="M736.75 555.29v468.85a40.12 40.12 0 0 1-40 40h-46.53a40.12 40.12 0 0 0-40 40v607"
+     fill="none"
+     stroke="#f0f"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path12"
+     style="stroke:#faaf16;stroke-opacity:1" />
+  <path
+     class="bosnia affected"
+     d="M667.67 457.46v511.33c0 22-16.83 40-37.39 40s-37.39 18-37.39 40v662.35M575.56 1711.18V366.59M653.52 1711.18v762.1M618.89 1711.14v307.29a40.12 40.12 0 0 1-40 40H0"
+     fill="none"
+     stroke="#f0f"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path14"
+     style="stroke:#faaf16;stroke-opacity:1" />
+  <path
+     class="ukraine not-affected animate"
+     d="M1343.12 1711.14V993.49a40.12 40.12 0 0 0-40-40h-108a40.12 40.12 0 0 1-40-40V0"
+     fill="none"
+     stroke="#754c24"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path16"
+     style="stroke:#00adef;stroke-opacity:0.94117647" />
+  <path
+     class="serbia not-affected"
+     d="M748.26 353.84h139a40.12 40.12 0 0 1 40 40v630.3a40.12 40.12 0 0 0 40 40h301.29a40.12 40.12 0 0 1 40 40v607"
+     fill="none"
+     stroke="#754c24"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path18"
+     style="stroke:#00adef;stroke-opacity:0.94117647" />
+  <path
+     class="moldova not-affected animate"
+     d="M1033.53 145.32v823.47a40.12 40.12 0 0 0 40 40h212.33a40.12 40.12 0 0 1 40 40v662.35"
+     fill="none"
+     stroke="#754c24"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path20"
+     style="stroke:#00adef;stroke-opacity:0.94117647" />
+  <path
+     class="kosovo not-affected"
+     d="M766.17 451.03h60.1a40.12 40.12 0 0 1 40 40v588.36a40.12 40.12 0 0 0 40 40h344.92a40.12 40.12 0 0 1 40 40v551.75"
+     fill="none"
+     stroke="#754c24"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path22"
+     style="stroke:#00adef;stroke-opacity:0.94117647" />
+  <path
+     class="macedonia not-affected"
+     d="M812.22 513.75v620.94a40.12 40.12 0 0 0 40 40h381.64a40.12 40.12 0 0 1 40 40v496.45"
+     fill="none"
+     stroke="#754c24"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path24"
+     style="stroke:#00adef;stroke-opacity:0.94117647" />
+  <path
+     class="albania not-affected"
+     d="M736.75 555.29v634.7a40.12 40.12 0 0 0 40 40h439.78a40.12 40.12 0 0 1 40 40v441.15"
+     fill="none"
+     stroke="#754c24"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path26"
+     style="stroke:#00adef;stroke-opacity:0.94117647" />
+  <path
+     class="montenegro not-affected"
+     d="M667.67 457.46v787.82a40.12 40.12 0 0 0 40 40h491.53a40.12 40.12 0 0 1 40 40v385.86"
+     fill="none"
+     stroke="#754c24"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path28"
+     style="stroke:#00adef;stroke-opacity:0.94117647" />
+  <path
+     class="bosnia not-affected"
+     d="M575.56 366.59v934a40.12 40.12 0 0 0 40 40h566.31a40.12 40.12 0 0 1 40 40v330.55M1265.41 1711.18v762.1M1300.03 1711.14v307.29a40.12 40.12 0 0 0 40 40h578.9"
+     fill="none"
+     stroke="#754c24"
+     stroke-miterlimit="10"
+     stroke-width="6"
+     id="path30"
+     style="stroke:#00adef;stroke-opacity:0.94117647" />
+</svg>

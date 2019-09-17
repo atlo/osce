@@ -31,7 +31,7 @@ function showText(country) {
   if (country === 'bosnia') {
     document.querySelector('.bosnia-text tspan').setAttribute('y', window.scrollY + 21.6)
   }
-  console.log('show')
+
   Array
     .from(document.querySelectorAll(`.${country}-text`))
     .forEach(el => {
@@ -41,7 +41,6 @@ function showText(country) {
 }
 
 function hideText (country) {
-  console.log('hide')
   Array
     .from(document.querySelectorAll(`.${country}-text`))
     .forEach(el => {
@@ -373,9 +372,8 @@ function setHighlightedElements (group, {columns, rows}) {
 }
 
 function setToolTip (group, column, row) {
-  console.log({group, column, row})
   const activeIcon = document.querySelector(`.${group} li:nth-of-type(${column}) div:nth-of-type(${5 - row})`)
-  
+
   activeIcon.classList.add('action')
   activeIcon.addEventListener('click', toggleTooltip)
   activeIcon.addEventListener('mouseenter', showTooltup)
@@ -434,7 +432,7 @@ function paginate (isNext) {
 
   textTitle.innerHTML = selected.title
   textParagraph.innerHTML = selected.description
-  
+
   const leftPositions = calculateRowsAndColumns(left.percentage)
   const rightPositions = calculateRowsAndColumns(right.percentage)
 
@@ -490,7 +488,20 @@ paginate(false)
 backButton.addEventListener('click', e => paginate(false))
 nextButton.addEventListener('click', e => paginate(true))
 
+function animateWave (element) {
+  element.style.strokeDasharray = element.getTotalLength()
+  element.style.strokeDashoffset = element.getTotalLength()
+  element.style.animation = 'dash 3s linear forwards'
+}
 
+const firstWave = Array.from(document.querySelectorAll('.first'))
+const secondWave = Array.from(document.querySelectorAll('.second'))
+
+/* firstWave.forEach(animateWave)
+
+setTimeout(function () {
+  secondWave.forEach(animateWave)
+}, 3000) */
 // 160
 
 // 400
