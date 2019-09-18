@@ -417,12 +417,12 @@ body {
 
 .slider .left div.highlighted circle,
 .slider .left div.highlighted path {
-  fill: #C0262C;
+  fill: #faaf16;
 }
 
 .slider .right div.highlighted circle,
 .slider .right div.highlighted path {
-  fill: #FAAE1F;
+  fill: #00adef;
 }
 
 .action {
@@ -440,19 +440,19 @@ body {
 #atlo .percentage {
   position: absolute;
   z-index: 5;
-  bottom: 0;
+  bottom: 10px;
   font-family: 'Open Sans';
   font-size: 35px;
   font-weight: bold;
 }
 
 .left-number {
-  color: #C0262C;
+  color: #faaf16;
 }
 
 .right-number {
   left: calc(100% - 42px);
-  color: #FAAE1F;
+  color: #00adef;
 }
 
 .left,
@@ -510,15 +510,15 @@ text.text.active {
   }
 } */
 
-.not-affected,
-.right,
-.right-2 {
+.rivers .not-affected,
+.rivers .right,
+.rivers .right-2 {
   stroke: #00adef !important;
 }
 
-.affected,
-.left,
-.left-2 {
+.rivers .affected,
+.rivers .left,
+.rivers .left-2 {
   stroke: #faaf16 !important;
 }
 
