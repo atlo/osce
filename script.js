@@ -15,25 +15,81 @@ const left2River = Array.from(document.querySelectorAll('.left-2'))
 const rightRiver = Array.from(document.querySelectorAll('.right'))
 const right2River = Array.from(document.querySelectorAll('.right-2'))
 const ukraineRivers = Array.from(document.querySelectorAll('.ukraine'))
+const videoButtons = Array.from(document.querySelectorAll('.video-button'))
+const videoModal = document.querySelector('.video-modal')
+const videoModalCloseButton = document.querySelector('.video-modal button')
 
-const countries = ['ukraine', 'moldova', 'serbia', 'kosovo', 'macedonia', 'albania', 'montenegro', 'bosnia']
+const countries = [
+  {
+    name: 'ukraine',
+    fullName: 'Ukraine',
+    all: '14 998 738',
+    affected: '1 128 738'
+  },
+  {
+    name: 'moldova',
+    fullName: 'Moldova',
+    all: '1 191 922',
+    affected: '89 272'
+  },
+  {
+    name: 'serbia',
+    fullName: 'Serbia',
+    all: '2 657 994',
+    affected: '678 529'
+  },
+  {
+    name: 'kosovo',
+    fullName: 'Kosovo',
+    all: '584 388',
+    affected: '428 129'
+  },
+  {
+    name: 'macedonia',
+    fullName: 'North Macedonia',
+    all: '771 606',
+    affected: '143 641'
+  },
+  {
+    name: 'albania',
+    fullName: 'Albania',
+    all: '1 038 287',
+    affected: '202 130'
+  },
+  {
+    name: 'montenegro',
+    fullName: 'Montenegro',
+    all: '225 905',
+    affected: '23 344'
+  },
+  {
+    name: 'bosnia',
+    fullName: 'Bosnia and Herzegovina',
+    all: '1 335 698',
+    affected: '858 665'
+  }
+]
 
-countries.forEach(country => {
-  Array
-    .from(document.querySelectorAll(`.${country}.affected`))
-    .forEach(el => {
-      el.addEventListener('mouseenter', e => showText(country))
-      el.addEventListener('mouseleave', e => hideText(country))
-    })
-})
+countries
+  .forEach(country => {
+
+    console.log(`.${country.name}.hover-tooltip`)
+    Array
+      .from(document.querySelectorAll(`.${country.name}.hover-tooltip`))
+      .forEach(el => {
+        el.addEventListener('mouseenter', e => showMapTooltip(country))
+        el.addEventListener('mouseleave', e => hideMapTooltip(country))
+      })
+  })
 
 function showText(country) {
-  if (country === 'bosnia') {
+  console.log({country})
+  if (country.name === 'bosnia') {
     document.querySelector('.bosnia-text tspan').setAttribute('y', window.scrollY + 21.6)
   }
 
   Array
-    .from(document.querySelectorAll(`.${country}-text`))
+    .from(document.querySelectorAll(`.${country.name}-text`))
     .forEach(el => {
       el.classList.add('active')
       el.setAttribute('y', window.scrollY)
@@ -42,7 +98,7 @@ function showText(country) {
 
 function hideText (country) {
   Array
-    .from(document.querySelectorAll(`.${country}-text`))
+    .from(document.querySelectorAll(`.${country.name}-text`))
     .forEach(el => {
       el.classList.remove('active')
       setTimeout(function () {
@@ -62,7 +118,11 @@ const data = [
     description: 'For women directly affected by conflict, the perpetrator of these assaults is much more likely to be someone other than an intimate partner compared to women who are not directly conflict-affected (78% versus 46%). (Page 6)',
     left: {
       percentage: 78,
-      modifiers: [-36, -31]
+      modifiers: [-36, -31],
+      tooltip: {
+        position: 13,
+        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><p>Female, aged 36-55, urban, Albania</p>'
+      }
     },
     right: {
       percentage: 46,
@@ -373,20 +433,10 @@ function setHighlightedElements (group, {columns, rows}) {
 
 function setToolTip (group, column, row) {
   const activeIcon = document.querySelector(`.${group} li:nth-of-type(${column}) div:nth-of-type(${5 - row})`)
-
   activeIcon.classList.add('action')
   activeIcon.addEventListener('click', toggleTooltip)
-  activeIcon.addEventListener('mouseenter', showTooltup)
-  activeIcon.addEventListener('mouseleave', hideTooltup)
-  tooltip.style.top = `${(5 - row) * 20 + 5}%`
-
-  if (group === 'left') {
-    tooltip.classList.remove('right')
-    tooltip.style.left = `${41.5 - (20 - column) * 2.5}%`
-  } else {
-    tooltip.classList.add('right')
-    tooltip.style.left = `${0.5 + (column) * 2.5}%`
-  }
+  activeIcon.addEventListener('mouseenter', showTooltip)
+  activeIcon.addEventListener('mouseleave', hideTooltip)
 }
 
 function paginate (isNext) {
@@ -405,31 +455,6 @@ function paginate (isNext) {
   const selected = data[currentPage]
   const {left, right} = selected
 
-  leftRiver.forEach(el => {
-    el.style.strokeWidth = left.percentage / 100 * 170
-    if (left.modifiers) {
-      el.setAttribute('transform', `translate(${left.modifiers[0]}, 0)`)
-    }
-  })
-  rightRiver.forEach(el => {
-    el.style.strokeWidth = right.percentage / 100 * 400
-    if (right.modifiers) {
-      el.setAttribute('transform', `translate(${right.modifiers[0]}, 0)`)
-    }
-  })
-  left2River.forEach(el => {
-    el.style.strokeWidth = (100 - left.percentage) / 100 * 170
-    if (left.modifiers) {
-      el.setAttribute('transform', `translate(${left.modifiers[1]}, 0)`)
-    }
-  })
-  right2River.forEach(el => {
-    el.style.strokeWidth = (100 - right.percentage) / 100 * 400
-    if (right.modifiers) {
-      el.setAttribute('transform', `translate(${right.modifiers[1]}, 0)`)
-    }
-  })
-
   textTitle.innerHTML = selected.title
   textParagraph.innerHTML = selected.description
 
@@ -438,16 +463,11 @@ function paginate (isNext) {
 
   setHighlightedElements('left', leftPositions)
   setHighlightedElements('right', rightPositions)
-  console.log(leftPositions.columns, rightNumber.offsetWidth)
+
   leftNumber.innerHTML = `${selected.left.percentage}%`
-  /* leftNumber.style.left = `calc(${(20leftPositions.columns) * 2.5}% + ${leftNumber.offsetWidth}px)` */
   rightNumber.innerHTML = `${selected.right.percentage}%`
   rightNumber.style.left = `calc(100% - ${rightNumber.offsetWidth}px)`
 
-  video.innerHTML = `
-  <video controls>
-    <source src="videos/${selected.video}"></source>
-  </video>`
 
   if (left.tooltip) {
     console.log(left.tooltip)
@@ -472,36 +492,78 @@ function toggleTooltip (event) {
   tooltip.classList.toggle('active')
 }
 
-function showTooltup (event) {
+function showTooltip (event) {
   event.stopPropagation()
-
-  tooltip.classList.add('active')
+  const {x, y} = getMousePosition()
+  console.log({x, y})
+  tooltip.style.top = y + 45 + 'px'
+  tooltip.style.left = x - 110 + 'px'
+  tooltip.style.opacity = 1
 }
 
-function hideTooltup (event) {
+function hideTooltip (event) {
   event.stopPropagation()
 
   tooltip.classList.remove('active')
+  tooltip.style.opacity = 0
+
+  setTimeout(function () {
+    tooltip.style.left = '-9999px'
+  }, 300)
+}
+
+function showVideoModal (event) {
+  const button = event.target.parentElement
+  const id = button.dataset.id || '1'
+  
+  document.querySelector('.video-modal video').src = `videos/${id}.mov`
+
+  videoModal.style.left = '0'
+  videoModal.style.opacity = 1
+}
+
+function hideVideoModal (event) {
+  videoModal.style.opacity = 0
+
+  setTimeout(function () {
+    videoModal.style.left = '-9999px'
+  }, 300)
 }
 
 paginate(false)
 backButton.addEventListener('click', e => paginate(false))
 nextButton.addEventListener('click', e => paginate(true))
 
-function animateWave (element) {
-  element.style.strokeDasharray = element.getTotalLength()
-  element.style.strokeDashoffset = element.getTotalLength()
-  element.style.animation = 'dash 3s linear forwards'
+videoButtons.forEach(button => button.addEventListener('click', showVideoModal))
+videoModalCloseButton.addEventListener('click', hideVideoModal)
+
+function getMousePosition () {
+  return {
+    x: window.event.pageX + 60,
+    y: window.event.pageY
+  }
 }
 
-const firstWave = Array.from(document.querySelectorAll('.first'))
-const secondWave = Array.from(document.querySelectorAll('.second'))
+function showMapTooltip (country) {
+  const tooltip = document.querySelector('.map-tooltip')
 
-/* firstWave.forEach(animateWave)
+  tooltip.innerHTML = `
+  <p>${country.fullName}</p>
+  <p>all women: <strong>${country.all}</strong></p>
+  <p>conflict affected women: <strong>${country.affected}</strong></p>
+  `
+  const {x, y} = getMousePosition()
 
-setTimeout(function () {
-  secondWave.forEach(animateWave)
-}, 3000) */
-// 160
+  tooltip.style.top = y + 'px'
+  tooltip.style.left = x + 'px'
+  tooltip.style.opacity = 1
+}
 
-// 400
+function hideMapTooltip () {
+  const tooltip = document.querySelector('.map-tooltip')
+
+  tooltip.style.opacity = 0
+  setTimeout(function () {
+    tooltip.style.left = '-9999px'
+  }, 300)
+}

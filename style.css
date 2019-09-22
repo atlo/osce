@@ -7,7 +7,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 0 250px;
 }
 
 .container {
@@ -15,14 +15,6 @@ body {
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
-}
-
-svg#svg3581 {
-  position: relative;
-  width: 165%;
-  height: 264%;
-  right: 37%;
-  margin-bottom: 30px;
 }
 
 #atlo *,
@@ -240,11 +232,34 @@ svg#svg3581 {
 }
 
 #atlo .content-text {
+  height: 150px;
   margin: 50px 0;
 }
 
-#atlo .content-text h2 {
+#atlo h2 {
   font-family: 'Merriweather', serif;
+  font-size: 32px;
+}
+
+#atlo ul {
+  list-style: disc;
+}
+
+#atlo {
+  font-family: 'Open Sans' sans-serif;
+}
+
+#atlo p {
+  margin-bottom: 30px;
+}
+
+#atlo li {
+  margin-bottom: 10px;
+}
+
+#atlo p,
+#atlo li {
+  font-size: 18px;
 }
 
 #atlo video {
@@ -383,11 +398,19 @@ svg#svg3581 {
   justify-content: space-between;
 }
 
+.slider div {
+  width: 48%;
+}
+
+.slider h3 {
+  font-weight: normal;
+  text-align: center;
+}
+
 .slider ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 48%;
 }
 
 .slider li svg {
@@ -395,45 +418,50 @@ svg#svg3581 {
   height: 50px;
 }
 
-.slider li svg circle,
+/* .slider li svg circle,
 .slider li svg path {
   transition: fill .5s;
+} */
+
+.slider .left ul div.highlighted circle,
+.slider .left ul div.highlighted path {
+  fill: #faaf16;
 }
 
-.slider .left div.highlighted circle,
-.slider .left div.highlighted path {
-  fill: #C0262C;
+.slider .right ul div.highlighted circle,
+.slider .right ul div.highlighted path {
+  fill: #00adef;
 }
 
-.slider .right div.highlighted circle,
-.slider .right div.highlighted path {
-  fill: #FAAE1F;
-}
-
-.action {
-  filter: brightness(50%)
+.slider ul div.highlighted.action circle,
+.slider ul div.highlighted.action path {
+  fill: #ef4023;
 }
 
 .slider-container {
   position: relative;
 }
 
+.slider-container li {
+  list-style: none;
+}
+
 #atlo .percentage {
   position: absolute;
   z-index: 5;
-  bottom: 0;
+  bottom: 10px;
   font-family: 'Open Sans';
   font-size: 35px;
   font-weight: bold;
 }
 
 .left-number {
-  color: #C0262C;
+  color: #faaf16;
 }
 
 .right-number {
   left: calc(100% - 42px);
-  color: #FAAE1F;
+  color: #00adef;
 }
 
 .left,
@@ -452,12 +480,174 @@ text.text.active {
   opacity: 1;
 }
 
+.overlay-container {
+  position: absolute;
+  top: 25%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
+}
+
+#atlo .overlay-container a {
+  color: black;
+  text-decoration: none;
+}
+
+.overlay-container li {
+  list-style: none;
+  text-align: center;
+}
+
+#atlo .overlay-container > ul > li {
+  margin-bottom: 130px;
+}
+
+.overlay-container > ul > li ul {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+}
+
+.overlay-container > ul > li li {
+  width: 215px;
+}
+
+.video-modal {
+  position: fixed;
+  z-index: 4;
+  top: 30%;
+  left: -9999px;
+  right: 0;
+  width: 500px;
+  height: 330px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+  padding: 15px;
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.video-modal button {
+  float: right;
+}
+
+
+.map-tooltip {
+  position: absolute;
+  z-index: 9;
+  left: 0;
+  width: 300px;
+  background: white;
+  -webkit-box-shadow: 5px 0px 5px 5px rgba(0,0,0,0.1);
+  -moz-box-shadow: 5px 0px 5px 5px rgba(0,0,0,0.1);
+  box-shadow: 5px 0px 5px 5px rgba(0,0,0,0.1);
+  opacity: 0;
+  padding: 10px 15px;
+  transition: opacity .3s;
+}
+
+#atlo .map-tooltip p {
+  margin-bottom: 0;
+}
+
+
+/* @keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+} */
+
+/* .rivers .not-affected,
+.rivers .right,
+.rivers .right-2 {
+  stroke: #00adef !important;
+}
+
+.rivers .affected,
+.rivers .left,
+.rivers .left-2 {
+  stroke: #faaf16 !important;
+} */
+
+/* .ukraine.not-affected {
+  stroke-width: calc(375px * 0.7204) !important; 270.15
+} */
+
+/* .serbia.not-affected {
+  stroke-width: calc(375px * 0.1028) !important; 38.55
+}
+
+.macedonia.not-affected {
+  stroke-width: calc(375px * 0.0326) !important; 12.225
+}
+
+.montenegro.not-affected {
+  stroke-width: calc(375px * 0.0105) !important; 3.9375
+}
+
+.moldova.not-affected {
+  stroke-width: calc(375px * 0.0573) !important; 21.4875
+}
+
+.kosovo.not-affected {
+  stroke-width: calc(375px * 0.0081) !important; 3.0375
+}
+
+.bosnia.not-affected {
+  stroke-width: calc(375px * 0.0248) !important; 9.3
+}
+
+.albania.not-affected {
+  stroke-width: calc(375px * 0.0434) !important; 16.275
+}
+
+.ukraine.affected {
+  stroke-width: calc(375px * 0.0586) !important; 21.975
+}
+
+.serbia.affected {
+  stroke-width: calc(375px * 0.0352) !important; 13.2
+}
+
+.macedonia.affected {
+  stroke-width: calc(375px * 0.0075) !important; 2.8125
+}
+
+.montenegro.affected {
+  stroke-width: calc(375px * 0.0012) !important; 0.45
+}
+
+.moldova.affected {
+  stroke-width: calc(375px * 0.0046) !important; 1.725
+}
+
+.kosovo.affected {
+  stroke-width: calc(375px * 0.0222) !important; 8.325
+}
+
+.bosnia.affected {
+  stroke-width: calc(375px * 0.0446) !important; 16.725
+}
+
+.albania.affected {
+  stroke-width: calc(375px * 0.0105) !important; 3.9375
+} */
+
 @media (max-width: 1000px) {
   .slider {
     flex-wrap: wrap;
   }
 
-  #atlo .slider ul {
+  #atlo .slider > div {
     width: 100%;
     margin-bottom: 25px;
   }
@@ -469,4 +659,112 @@ text.text.active {
   #atlo .percentage.right-number {
     bottom: 4%;
   }
+}
+
+.inline {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+}
+
+.page {
+  position: relative;
+  width: 100%;
+  /* opacity: 0; */
+}
+
+.page.active {
+  opacity: 1;
+}
+
+.page .container {
+  position: relative;
+  z-index: 2;
+}
+
+#page-1 {
+  text-align: center;
+}
+
+#page-1 .background {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 100% 100%;
+  text-align: center;
+}
+
+#page-2 .map,
+#page-2 .rivers {
+  width: 100%;
+  height: auto;
+}
+
+#page-2 .map {
+  position: absolute;
+}
+
+#page-2 .rivers {
+  position: relative;
+  z-index: 1;
+  position: relative;
+  width: 50.2753%;
+  left: 23%;
+  margin-top: 11.5%;
+}
+
+#page-3 {
+}
+
+.navigation {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.next-page a {
+  color: black;
+  text-decoration: none;
+}
+
+.icon {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  border-radius: 100%;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+.next-page-tooltip {
+  position: absolute;
+  left: 100%;
+  bottom: 40%;
+  z-index: 1;
+  width: 370px;
+  background: white;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  font-size: 16px;
+  padding: 10px;
+  -ms-text-align-last: auto;
+  text-align: left;
+  opacity: 0;
+}
+
+.next-page:hover + .next-page-tooltip {
+  opacity: 1;
+}
+
+.next-page:first-of-type:hover + .next-page-tooltip:first-of-type {
+  left: 30%;
+}
+
+.next-page:last-of-type:hover + .next-page-tooltip:last-of-type {
+  left: 10%;
 }
