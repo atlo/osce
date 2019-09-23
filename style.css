@@ -436,6 +436,13 @@ body {
   fill: #ef4023;
 }
 
+.slider .right ul div.highlighted.action circle,
+.slider .right ul div.highlighted.action path {
+  fill: #00437B;
+}
+
+
+
 .slider-container {
   position: relative;
 }
