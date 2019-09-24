@@ -272,6 +272,66 @@ body {
   transition: all .3s;
 }
 
+#atlo .pagination-pages {
+  justify-content: flex-start;
+  margin-top: 30px;
+}
+
+#atlo .pagination-pages svg {
+  width: 92px;
+  height: 92px;
+  margin-bottom: 15px;
+}
+
+#atlo .pagination-pages p {
+  font-size: 15px;
+}
+
+#atlo .pagination-pages div {
+  text-align: center;
+}
+
+#atlo .pagination-pages div div {
+  border-right: 1px dashed #bfbfbf;
+}
+
+#atlo .pagination-pages li:last-of-type div div {
+  border-right: 0;
+}
+
+#atlo .pagination-pages li {
+  list-style: none;
+}
+
+#atlo .pagination-pages > li ul {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+}
+
+#atlo .pagination-pages > li ul li {
+  margin-right: 3.5px;
+}
+
+#atlo .pagination-pages > li ul li:last-of-type {margin-right: 0;}
+
+#atlo .pagination-pages button {
+  width: 50px;
+  height: 32px;
+  background: #e5e9ea;
+  border: 1px solid #f2f3f5;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  line-height: 20px;
+  text-align: center;
+}
+
+#atlo .pagination-pages button.active {
+  background: #808080;
+  border-color: #bfbfbf;
+}
+
 @keyframes alice {
   0% {
     transform: scale(1);
@@ -421,6 +481,12 @@ body {
   transition: fill .5s;
 } */
 
+.slider circle,
+.slider path {
+  fill: #dadde0;
+  transition: fill .5s;
+}
+
 .slider .left ul div.highlighted circle,
 .slider .left ul div.highlighted path {
   fill: #faaf16;
@@ -490,6 +556,10 @@ text.text.active {
   z-index: 2;
 }
 
+#atlo .overlay-container p {
+  font-size: 16px;
+}
+
 #atlo .overlay-container a {
   color: black;
   text-decoration: none;
@@ -501,7 +571,7 @@ text.text.active {
 }
 
 #atlo .overlay-container > ul > li {
-  margin-bottom: 130px;
+  margin-bottom: 22%;
 }
 
 .overlay-container > ul > li ul {
@@ -708,9 +778,9 @@ text.text.active {
   position: relative;
   z-index: 1;
   position: relative;
-  width: 50.2753%;
-  left: 23%;
-  margin-top: 11.5%;
+  width: 53.9544638%;
+  left: 22.023%;
+  margin-top: 11%;
 }
 
 #page-3 {
@@ -729,8 +799,8 @@ text.text.active {
 
 .icon {
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   margin-bottom: 10px;
   border-radius: 100%;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);

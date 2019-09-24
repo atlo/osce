@@ -18,6 +18,7 @@ const ukraineRivers = Array.from(document.querySelectorAll('.ukraine'))
 const videoButtons = Array.from(document.querySelectorAll('.video-button'))
 const videoModal = document.querySelector('.video-modal')
 const videoModalCloseButton = document.querySelector('.video-modal button')
+const paginationButtons = document.querySelectorAll('.pagination-pages button')
 
 const countries = [
   {
@@ -439,7 +440,7 @@ function setToolTip (group, column, row) {
   activeIcon.addEventListener('mouseleave', hideTooltip)
 }
 
-function paginate (isNext) {
+function paginate (isNext, page) {
   tooltip.classList.remove('active')
 
   Array
@@ -449,8 +450,15 @@ function paginate (isNext) {
   if (isNext) {
     currentPage = currentPage === data.length - 1 ? currentPage : currentPage += 1
   } else {
-    currentPage = currentPage === 0 ? currentPage : currentPage - 1
+    if (page) {
+      currentPage = Number(page)
+    } else {
+      currentPage = currentPage === 0 ? currentPage : currentPage - 1
+    }
   }
+
+  paginationButtons.forEach(button => button.classList.remove('active'))
+  paginationButtons[currentPage].classList.add('active')
 
   const selected = data[currentPage]
   const {left, right} = selected
@@ -515,7 +523,7 @@ function hideTooltip (event) {
 function showVideoModal (event) {
   const button = event.target.parentElement
   const id = button.dataset.id || '1'
-  
+
   document.querySelector('.video-modal video').src = `videos/${id}.mov`
 
   videoModal.style.left = '0'
@@ -536,6 +544,16 @@ nextButton.addEventListener('click', e => paginate(true))
 
 videoButtons.forEach(button => button.addEventListener('click', showVideoModal))
 videoModalCloseButton.addEventListener('click', hideVideoModal)
+
+paginationButtons.forEach(button => addEventListener('click', function (event) {
+  const {value} = event.target
+  if (value) {
+    paginationButtons.forEach(button => button.classList.remove('active'))
+    event.target.classList.add('active')
+
+    paginate(false, value)
+  }
+}))
 
 function getMousePosition () {
   return {
