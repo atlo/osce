@@ -139,7 +139,11 @@ const data = [
     },
     right: {
       percentage: 5,
-      modifiers: [-65, -65]
+      modifiers: [-65, -65],
+      tooltip: {
+        position: 3,
+        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><p>Female, aged 36-55, urban, Albania</p>'
+      }
     }
   }, {
     id: 3,
