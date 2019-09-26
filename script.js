@@ -22,6 +22,7 @@ const videoModalCloseButton = document.querySelector('.video-modal button')
 const paginationButtons = document.querySelectorAll('.pagination-pages button')
 const nextPage = document.querySelector('.next-page a')
 const page2 = document.querySelector('#page-2')
+const rivers = document.querySelector('.rivers')
 
 const countries = [
   {
@@ -578,6 +579,7 @@ nextPage.addEventListener('click', function (event) {
     })
 
     map.classList.add('active')
+    rivers.classList.add('active')
   }, 100)
 })
 

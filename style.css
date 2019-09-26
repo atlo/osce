@@ -558,7 +558,7 @@ text.text.active {
 
 .overlay-container {
   position: absolute;
-  top: 23%;
+  top: 21%;
   left: 0;
   right: 0;
   width: 100%;
@@ -803,12 +803,8 @@ text.text.active {
   left: 50%;
   right: 50%;
   opacity: 0;
-  transition: opacity 2s;
   transform: translate(-50%, 0);
-}
-
-#page-2 .map.active {
-  opacity: 1;
+  transition: opacity 2s;
 }
 
 @keyframes dash {
@@ -827,10 +823,14 @@ text.text.active {
   width: 930px;
   left: 50%;
   right: 50%;
+  opacity: 0;
   transform: translate(-54%, 9.2%);
+  transition: opacity 2s;
 }
 
-#page-3 {
+#page-2 .map.active,
+#page-2 .rivers.active {
+  opacity: 1;
 }
 
 .navigation {
