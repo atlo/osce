@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather:700&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Merriweather:700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap'); */
 
 @font-face {
   font-family: 'Myriad Pro';
@@ -8,6 +8,10 @@
 
 body {
   margin: 0 0 250px;
+}
+
+#atlo {
+  overflow-x: hidden;
 }
 
 .container {
@@ -310,10 +314,10 @@ body {
 }
 
 #atlo .pagination-pages > li ul li {
-  margin-right: 3.5px;
+  margin-right: 2.5px;
 }
 
-#atlo .pagination-pages > li ul li:last-of-type {margin-right: 0;}
+#atlo .pagination-pages > li:last-of-type ul li:last-of-type {margin-right: 0;}
 
 #atlo .pagination-pages button {
   width: 50px;
@@ -511,6 +515,7 @@ body {
 
 .slider-container {
   position: relative;
+  margin-top: 300px;
 }
 
 .slider-container li {
@@ -553,7 +558,7 @@ text.text.active {
 
 .overlay-container {
   position: absolute;
-  top: 25%;
+  top: 23%;
   left: 0;
   right: 0;
   width: 100%;
@@ -771,23 +776,58 @@ text.text.active {
   text-align: center;
 }
 
+.container.map-text {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 0)
+}
+
+#page-2 {
+  display: none;
+}
+
+#page-2.active {
+  display: block;
+  opacity: 1;
+}
+
 #page-2 .map,
 #page-2 .rivers {
-  width: 100%;
+  width: 1920px;
   height: auto;
 }
 
 #page-2 .map {
   position: absolute;
+  left: 50%;
+  right: 50%;
+  opacity: 0;
+  transition: opacity 2s;
+  transform: translate(-50%, 0);
+}
+
+#page-2 .map.active {
+  opacity: 1;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 #page-2 .rivers {
   position: relative;
   z-index: 1;
   position: relative;
-  width: 53.9544638%;
-  left: 22.023%;
-  margin-top: 11%;
+  /* width: 53.9544638%; */
+  /* left: 22.023%; */
+  /* margin-top: 11%; */
+  width: 930px;
+  left: 50%;
+  right: 50%;
+  transform: translate(-54%, 9.2%);
 }
 
 #page-3 {

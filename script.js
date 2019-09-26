@@ -1,5 +1,6 @@
 
 const container = document.querySelector('#atlo')
+const map = document.querySelector('.map')
 const backButton = document.querySelector('.back-button')
 const nextButton = document.querySelector('.next-button')
 const tooltip = document.querySelector('.tooltip')
@@ -19,6 +20,8 @@ const videoButtons = Array.from(document.querySelectorAll('.video-button'))
 const videoModal = document.querySelector('.video-modal')
 const videoModalCloseButton = document.querySelector('.video-modal button')
 const paginationButtons = document.querySelectorAll('.pagination-pages button')
+const nextPage = document.querySelector('.next-page a')
+const page2 = document.querySelector('#page-2')
 
 const countries = [
   {
@@ -559,6 +562,25 @@ paginationButtons.forEach(button => addEventListener('click', function (event) {
   }
 }))
 
+function showNextPage () {
+
+}
+
+nextPage.addEventListener('click', function (event) {
+  event.preventDefault()
+
+  page2.classList.add('active')
+
+  setTimeout(function () {
+    page2.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+
+    map.classList.add('active')
+  }, 100)
+})
+
 function getMousePosition () {
   return {
     x: window.event.pageX + 60,
@@ -588,4 +610,5 @@ function hideMapTooltip () {
   setTimeout(function () {
     tooltip.style.left = '-9999px'
   }, 300)
+
 }
