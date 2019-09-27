@@ -72,7 +72,7 @@ body {
 #atlo .inline {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #atlo .text {
@@ -883,7 +883,7 @@ text.text.active {
 }
 
 .next-page:first-of-type:hover + .next-page-tooltip:first-of-type {
-  left: 30%;
+  left: 60%;
 }
 
 .next-page:last-of-type:hover + .next-page-tooltip:last-of-type {
