@@ -166,6 +166,10 @@ body {
   padding: 5px;
 }
 
+#atlo .pagination {
+  justify-content: space-between;
+}
+
 #atlo .pagination button {
   height: 40px;
   width: 40px;
@@ -572,6 +576,12 @@ text.text.active {
   margin-left: auto;
   margin-right: auto;
   z-index: 2;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.overlay-container.active {
+  opacity: 1;
 }
 
 #atlo .overlay-container p {
@@ -646,87 +656,11 @@ text.text.active {
 }
 
 
-/* @keyframes dash {
+@keyframes dash {
   to {
     stroke-dashoffset: 0;
   }
-} */
-
-/* .rivers .not-affected,
-.rivers .right,
-.rivers .right-2 {
-  stroke: #00adef !important;
 }
-
-.rivers .affected,
-.rivers .left,
-.rivers .left-2 {
-  stroke: #faaf16 !important;
-} */
-
-/* .ukraine.not-affected {
-  stroke-width: calc(375px * 0.7204) !important; 270.15
-} */
-
-/* .serbia.not-affected {
-  stroke-width: calc(375px * 0.1028) !important; 38.55
-}
-
-.macedonia.not-affected {
-  stroke-width: calc(375px * 0.0326) !important; 12.225
-}
-
-.montenegro.not-affected {
-  stroke-width: calc(375px * 0.0105) !important; 3.9375
-}
-
-.moldova.not-affected {
-  stroke-width: calc(375px * 0.0573) !important; 21.4875
-}
-
-.kosovo.not-affected {
-  stroke-width: calc(375px * 0.0081) !important; 3.0375
-}
-
-.bosnia.not-affected {
-  stroke-width: calc(375px * 0.0248) !important; 9.3
-}
-
-.albania.not-affected {
-  stroke-width: calc(375px * 0.0434) !important; 16.275
-}
-
-.ukraine.affected {
-  stroke-width: calc(375px * 0.0586) !important; 21.975
-}
-
-.serbia.affected {
-  stroke-width: calc(375px * 0.0352) !important; 13.2
-}
-
-.macedonia.affected {
-  stroke-width: calc(375px * 0.0075) !important; 2.8125
-}
-
-.montenegro.affected {
-  stroke-width: calc(375px * 0.0012) !important; 0.45
-}
-
-.moldova.affected {
-  stroke-width: calc(375px * 0.0046) !important; 1.725
-}
-
-.kosovo.affected {
-  stroke-width: calc(375px * 0.0222) !important; 8.325
-}
-
-.bosnia.affected {
-  stroke-width: calc(375px * 0.0446) !important; 16.725
-}
-
-.albania.affected {
-  stroke-width: calc(375px * 0.0105) !important; 3.9375
-} */
 
 @media (max-width: 1000px) {
   .slider {
@@ -786,7 +720,13 @@ text.text.active {
   position: absolute;
   left: 50%;
   right: 50%;
-  transform: translate(-50%, 0)
+  transform: translate(-50%, 0);
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+.container.map-text.active {
+  opacity: 1;
 }
 
 #page-2 {
@@ -813,29 +753,18 @@ text.text.active {
   transition: opacity 2s;
 }
 
-@keyframes dash {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
 #page-2 .rivers {
   position: relative;
   z-index: 1;
   position: relative;
-  /* width: 53.9544638%; */
-  /* left: 22.023%; */
-  /* margin-top: 11%; */
   width: 930px;
   left: 50%;
   right: 50%;
-  opacity: 0;
-  transform: translate(-54%, 9.2%);
+  transform: translate(-54%, 7.4%);
   transition: opacity 2s;
 }
 
-#page-2 .map.active,
-#page-2 .rivers.active {
+#page-2 .map.active {
   opacity: 1;
 }
 
@@ -888,4 +817,14 @@ text.text.active {
 
 .next-page:last-of-type:hover + .next-page-tooltip:last-of-type {
   left: 10%;
+}
+
+.rivers line,
+.rivers path {
+  opacity: 0;
+}
+
+.rivers line.active,
+.rivers path.active {
+  opacity: 1;
 }

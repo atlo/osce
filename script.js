@@ -23,6 +23,8 @@ const paginationButtons = document.querySelectorAll('.pagination-pages button')
 const nextPage = document.querySelector('.next-page a')
 const page2 = document.querySelector('#page-2')
 const rivers = document.querySelector('.rivers')
+const mapText = document.querySelector('.map-text')
+const overlayContainer = document.querySelector('.overlay-container')
 
 const countries = [
   {
@@ -578,10 +580,39 @@ nextPage.addEventListener('click', function (event) {
       block: 'start'
     })
 
-    map.classList.add('active')
-    rivers.classList.add('active')
+    setTimeout(function () {
+      map.classList.add('active')
+      mapText.classList.add('active')
+
+      document.addEventListener('wheel', function showRivers () {
+        animateLines(Array.from(document.querySelectorAll('.first')))
+
+        setTimeout(function () {
+          animateLines(Array.from(document.querySelectorAll('.second')))
+        }, 2000)
+
+        setTimeout(function () {
+          overlayContainer.classList.add('active')
+          animateLines(Array.from(document.querySelectorAll('.third')))
+        }, 4000)
+
+        document.removeEventListener('wheel', showRivers)
+      })
+    }, 500)
   }, 100)
 })
+
+function animateLines (elements) {
+  elements.forEach(function (element) {
+    element.classList.add('active')
+    const length = element.getTotalLength()
+
+    element.style.strokeDasharray = element.getTotalLength()
+    element.style.strokeDashoffset = element.getTotalLength()
+    element.style.animation = 'dash 2s linear forwards'
+
+  })
+}
 
 function getMousePosition () {
   return {
