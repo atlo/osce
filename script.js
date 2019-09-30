@@ -588,13 +588,13 @@ nextPage.addEventListener('click', function (event) {
         animateLines(Array.from(document.querySelectorAll('.first')))
 
         setTimeout(function () {
-          animateLines(Array.from(document.querySelectorAll('.second')))
+          animateLines(Array.from(document.querySelectorAll('.second')),4)
         }, 2000)
 
         setTimeout(function () {
           overlayContainer.classList.add('active')
           animateLines(Array.from(document.querySelectorAll('.third')))
-        }, 4000)
+        }, 6000)
 
         document.removeEventListener('wheel', showRivers)
       })
@@ -602,14 +602,14 @@ nextPage.addEventListener('click', function (event) {
   }, 100)
 })
 
-function animateLines (elements) {
+function animateLines (elements, seconds = 2) {
   elements.forEach(function (element) {
     element.classList.add('active')
     const length = element.getTotalLength()
 
     element.style.strokeDasharray = element.getTotalLength()
     element.style.strokeDashoffset = element.getTotalLength()
-    element.style.animation = 'dash 2s linear forwards'
+    element.style.animation = `dash ${seconds}s linear forwards`
 
   })
 }
