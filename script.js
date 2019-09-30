@@ -593,6 +593,9 @@ nextPage.addEventListener('click', function (event) {
 
         setTimeout(function () {
           overlayContainer.classList.add('active')
+        }, 2500)
+
+        setTimeout(function () {
           animateLines(Array.from(document.querySelectorAll('.third')))
         }, 6000)
 
@@ -610,7 +613,6 @@ function animateLines (elements, seconds = 2) {
     element.style.strokeDasharray = element.getTotalLength()
     element.style.strokeDashoffset = element.getTotalLength()
     element.style.animation = `dash ${seconds}s linear forwards`
-
   })
 }
 
