@@ -628,7 +628,7 @@ function showMapTooltip (country) {
 
   tooltip.innerHTML = `
   <p>${country.fullName}</p>
-  <p>all women: <strong>${country.all}</strong></p>
+  <p>female population: <strong>${country.all}</strong></p>
   <p>conflict affected women: <strong>${country.affected}</strong></p>
   `
   const {x, y} = getMousePosition()
