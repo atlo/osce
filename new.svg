@@ -7,23 +7,23 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   viewBox="0 0 1801.7919 4995.4812"
+   viewBox="0 0 1801.7919 4249.2898"
    version="1.1"
    id="svg3581"
    sodipodi:docname="new.svg"
-   inkscape:version="0.92.4 (unknown)"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
    class="rivers"
    width="1801.7919"
-   height="4995.4814">
+   height="4249.29">
   <style
      id="style946">
-                @import url('https://fonts.googleapis.com/css?family=Roboto&amp;display=swap');
-                @import url('fonts/MYRIADPRO-REGULAR.woff');
-                @font-face {
-                  font-family: Myriad;
-                  src: url(fonts/MYRIADPRO-REGULAR.woff);
-                }
-              </style>
+                      @import url('https://fonts.googleapis.com/css?family=Roboto&amp;display=swap');
+                      @import url('fonts/MYRIADPRO-REGULAR.woff');
+                      @font-face {
+                        font-family: Myriad;
+                        src: url(fonts/MYRIADPRO-REGULAR.woff);
+                      }
+                    </style>
   <metadata
      id="metadata3585">
     <rdf:rdf>
@@ -64,8 +64,8 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-width="1853"
+     inkscape:window-height="1025"
      id="namedview3583"
      showgrid="false"
      fit-margin-top="0"
@@ -74,8 +74,8 @@
      fit-margin-bottom="0"
      inkscape:zoom="0.10365949"
      inkscape:cx="-1560.5448"
-     inkscape:cy="2404.2537"
-     inkscape:window-x="0"
+     inkscape:cy="1658.0623"
+     inkscape:window-x="67"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
      inkscape:current-layer="edce9a80-aa17-4c46-89f4-b92668b3371d" />
@@ -159,7 +159,7 @@
          d="m 567.51,1287.62 v 227.62 c 0.0659,22.064 17.93596,39.9341 40,40 h 195.53167 c 22.06404,0.066 39.9341,17.936 40,40 v 1921.7799"
          stroke-miterlimit="10"
          id="path186"
-         class="albania not-affected second"
+         class="albania not-affected hover-tooltip second"
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#00adef;stroke-width:16.27499962;stroke-miterlimit:10;stroke-opacity:1"
          sodipodi:nodetypes="cccccc" />
@@ -227,7 +227,7 @@
          y2="1287.62"
          stroke-miterlimit="10"
          id="line206"
-         class="albania not-affected first"
+         class="albania not-affected hover-tooltip first"
          style="fill:none;stroke:#00adef;stroke-width:16.27499962;stroke-miterlimit:10;stroke-opacity:1" />
       <line
          x1="498.42999"
@@ -388,7 +388,7 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#faaf16;stroke-width:37.40000153px;stroke-miterlimit:10;stroke-opacity:1" />
       <path
-         d="m 438.35951,3181.63 v 79.48 c 0.0659,22.064 17.93596,39.9341 40,40 h 27.77 c 22.06404,0.066 39.9341,17.936 40,40 v 528.18 c -0.0659,22.064 -17.93596,39.9341 -40,40 h -18.66 c -22.06404,0.066 -39.9341,17.936 -40,40 v 1346.1914"
+         d="m 438.35951,3181.63 v 79.48 c 0.0659,22.064 17.93596,39.9341 40,40 h 27.77 c 22.06404,0.066 39.9341,17.936 40,40 v 528.18 c -0.0659,22.064 -17.93596,39.9341 -40,40 h -18.66 c -22.06404,0.066 -39.9341,17.936 -40,40 v 600"
          stroke-miterlimit="10"
          id="path322"
          class="left third"
@@ -410,7 +410,7 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#faaf16;stroke-width:37.40000153px;stroke-miterlimit:10;stroke-opacity:1" />
       <path
-         d="m 915.03734,3180.351 v 723.939 c 0,2.7614 2.23858,5 5,5 h 249.57996 c 2.7614,0 5,2.2386 5,5 v 1381.1914"
+         d="m 915.03734,3180.351 v 723.939 c 0,2.7614 2.23858,5 5,5 h 249.57996 c 2.7614,0 5,2.2386 5,5 v 600"
          stroke-miterlimit="10"
          id="path336"
          class="right third"
