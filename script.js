@@ -589,7 +589,7 @@ nextPage.addEventListener('click', function (event) {
 
         setTimeout(function () {
           animateLines(Array.from(document.querySelectorAll('.second')),4)
-        }, 2000)
+        }, 1500)
 
         setTimeout(function () {
           overlayContainer.classList.add('active')
@@ -597,7 +597,7 @@ nextPage.addEventListener('click', function (event) {
 
         setTimeout(function () {
           animateLines(Array.from(document.querySelectorAll('.third')))
-        }, 6000)
+        }, 5500)
 
         document.removeEventListener('wheel', showRivers)
       })
@@ -605,7 +605,7 @@ nextPage.addEventListener('click', function (event) {
   }, 100)
 })
 
-function animateLines (elements, seconds = 2) {
+function animateLines (elements, seconds = 1.5) {
   elements.forEach(function (element) {
     element.classList.add('active')
     const length = element.getTotalLength()
