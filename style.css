@@ -568,7 +568,7 @@ text.text.active {
 
 .overlay-container {
   position: absolute;
-  top: 22.5%;
+  top: 23%;
   left: 0;
   right: 0;
   width: 100%;
@@ -599,7 +599,19 @@ text.text.active {
 }
 
 #atlo .overlay-container > ul > li {
-  margin-bottom: 22%;
+  margin-bottom: 10%;
+}
+
+#atlo .overlay-container > ul > li.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+#atlo .overlay-container > ul > li.more-margin-bottom {
+  margin-bottom: 15%;
+}
+
+#atlo .overlay-container > ul > li.more2x-margin-bottom {
+  margin-bottom: 25%;
 }
 
 .overlay-container > ul > li ul {
@@ -827,4 +839,22 @@ text.text.active {
 .rivers line.active,
 .rivers path.active {
   opacity: 1;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url('images/faces2.jpg') center center no-repeat;
+  background-size: 100%;
+  opacity: .25;
+}
+
+.hero-foreground {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 100px;
 }
