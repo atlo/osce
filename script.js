@@ -19,7 +19,7 @@ const ukraineRivers = Array.from(document.querySelectorAll('.ukraine'))
 const videoButtons = Array.from(document.querySelectorAll('.video-button'))
 const videoModal = document.querySelector('.video-modal')
 const videoModalCloseButton = document.querySelector('.video-modal button')
-const paginationButtons = document.querySelectorAll('.pagination-pages button')
+const paginationButtons = Array.from(document.querySelectorAll('.pagination-pages > li > ul > li button'))
 const nextPage = document.querySelector('.next-page a')
 const page2 = document.querySelector('#page-2')
 const rivers = document.querySelector('.rivers')
@@ -79,8 +79,6 @@ const countries = [
 
 countries
   .forEach(country => {
-
-    console.log(`.${country.name}.hover-tooltip`)
     Array
       .from(document.querySelectorAll(`.${country.name}.hover-tooltip`))
       .forEach(el => {
@@ -90,7 +88,6 @@ countries
   })
 
 function showText(country) {
-  console.log({country})
   if (country.name === 'bosnia') {
     document.querySelector('.bosnia-text tspan').setAttribute('y', window.scrollY + 21.6)
   }
@@ -466,7 +463,7 @@ function paginate (isNext, page) {
       currentPage = currentPage === 0 ? currentPage : currentPage - 1
     }
   }
-
+  
   paginationButtons.forEach(button => button.classList.remove('active'))
   paginationButtons[currentPage].classList.add('active')
 
@@ -488,7 +485,6 @@ function paginate (isNext, page) {
 
 
   if (left.tooltip) {
-    console.log(left.tooltip)
     const {columns, rows} = calculateRowsAndColumns(left.tooltip.position)
     setToolTip('left', 20 - columns, rows - 1)
 
@@ -496,7 +492,6 @@ function paginate (isNext, page) {
   }
 
   if (right.tooltip) {
-    console.log(right.tooltip)
     const {columns, rows} = calculateRowsAndColumns(right.tooltip.position)
     setToolTip('right', columns + 1, rows - 1)
 
@@ -512,8 +507,9 @@ function toggleTooltip (event) {
 
 function showTooltip (event) {
   event.stopPropagation()
+
   const {x, y} = getMousePosition()
-  console.log({x, y})
+  
   tooltip.style.top = y + 45 + 'px'
   tooltip.style.left = x - 110 + 'px'
   tooltip.style.opacity = 1
@@ -647,3 +643,20 @@ function hideMapTooltip () {
   }, 300)
 
 }
+
+const iconButtons = Array.from(document.querySelectorAll('.icon-button'))
+
+iconButtons.forEach(function (button) {
+  button.addEventListener('click', function (event) {
+    const parent =  event.target.closest(".icon-button")
+    const {value} = parent
+    
+    if (value) {
+      const paginationButton = paginationButtons.find(button => button.value === value)
+
+      if (paginationButton) {
+        paginationButton.click()
+      }
+    }
+  })
+})

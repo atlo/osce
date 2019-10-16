@@ -295,15 +295,19 @@ body {
   font-size: 15px;
 }
 
-#atlo .pagination-pages div {
+#atlo .pagination-pages button {
   text-align: center;
 }
 
-#atlo .pagination-pages div div {
+#atlo .pagination-pages button {
+  display: block;
+}
+
+#atlo .pagination-pages button div {
   border-right: 1px dashed #bfbfbf;
 }
 
-#atlo .pagination-pages li:last-of-type div div {
+#atlo .pagination-pages li:last-of-type button div {
   border-right: 0;
 }
 
@@ -857,4 +861,26 @@ text.text.active {
   position: relative;
   z-index: 2;
   padding-bottom: 100px;
+}
+
+#atlo .pagination-pages button.icon-button {
+  width: 100%;
+  height: 92px;
+  margin-bottom: 15px;
+  padding: 0;
+  background: none;
+  border: 0;
+  outline:none;
+}
+
+#atlo .pagination-pages div button {
+  border-right: 1px dashed #bfbfbf;
+}
+
+#atlo .pagination-pages li:last-of-type div button {
+  border-right: 0;
+}
+
+#atlo .pagination-pages p {
+  text-align: center;
 }
