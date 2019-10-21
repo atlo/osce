@@ -884,3 +884,53 @@ text.text.active {
 #atlo .pagination-pages p {
   text-align: center;
 }
+
+#atlo .menu {
+  position: absolute;
+  z-index: 1;
+  top: 4%;
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+#atlo .menu.active {
+  opacity: 1;
+}
+
+#atlo .menu li {
+  margin-bottom: 5px;
+}
+
+#atlo .menu li button {
+  width: 250px;
+  height: 30px;
+  line-height: 30px;
+  list-style: none;
+  text-align: right;
+  color: white;
+  font-weight: bold;
+}
+
+.menu li:nth-of-type(1) {
+  background: #faaf16;
+}
+
+.menu li:nth-of-type(2) {
+  background: #e0831c;
+}
+
+.menu li:nth-of-type(3) {
+  background: #ef4023;
+}
+
+.menu li:nth-of-type(4) {
+  background: #b50e80;
+}
+
+.menu li:nth-of-type(5) {
+  background: #7c3593;
+}
+
+.menu li:nth-of-type(6) {
+  background: #00437a;
+}

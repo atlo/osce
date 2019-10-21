@@ -24,6 +24,7 @@ const nextPage = document.querySelector('.next-page a')
 const page2 = document.querySelector('#page-2')
 const rivers = document.querySelector('.rivers')
 const mapText = document.querySelector('.map-text')
+const menu = document.querySelector('.menu')
 const overlayContainer = document.querySelector('.overlay-container')
 
 const countries = [
@@ -579,6 +580,7 @@ nextPage.addEventListener('click', function (event) {
     setTimeout(function () {
       map.classList.add('active')
       mapText.classList.add('active')
+      menu.classList.add('active')
 
       document.addEventListener('wheel', function showRivers () {
         animateLines(Array.from(document.querySelectorAll('.first')))
