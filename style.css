@@ -887,7 +887,7 @@ text.text.active {
 
 #atlo .menu {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 4%;
   opacity: 0;
   transition: opacity 2s;
@@ -912,11 +912,11 @@ text.text.active {
 }
 
 .menu li:nth-of-type(1) {
-  background: #faaf16;
+  background: #FBAF17;
 }
 
 .menu li:nth-of-type(2) {
-  background: #e0831c;
+  background: #df831a;
 }
 
 .menu li:nth-of-type(3) {
@@ -924,7 +924,7 @@ text.text.active {
 }
 
 .menu li:nth-of-type(4) {
-  background: #b50e80;
+  background: #b40e80;
 }
 
 .menu li:nth-of-type(5) {
@@ -932,5 +932,5 @@ text.text.active {
 }
 
 .menu li:nth-of-type(6) {
-  background: #00437a;
+  background: #00437b;
 }
