@@ -909,6 +909,13 @@ text.text.active {
   text-align: right;
   color: white;
   font-weight: bold;
+  transition: all .3s;
+}
+
+#atlo .menu li button:hover {
+  height: 45px;
+  font-size: 17px;
+  line-height: 45px;
 }
 
 .menu li:nth-of-type(1) {
