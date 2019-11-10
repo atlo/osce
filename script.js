@@ -26,6 +26,8 @@ const rivers = document.querySelector('.rivers')
 const mapText = document.querySelector('.map-text')
 const menu = document.querySelector('.menu')
 const overlayContainer = document.querySelector('.overlay-container')
+const leftSubheader = document.querySelector('.slider .left .subheader')
+const rightSubheader = document.querySelector('.slider .right .subheader')
 
 const countries = [
   {
@@ -117,7 +119,7 @@ const animationTime = 800
 let currentPage = 0
 
 const data = [
-  {
+  /* {
     id: 1,
     title: 'Perpetrators',
     description: 'For women directly affected by conflict, the perpetrator of these assaults is much more likely to be someone other than an intimate partner compared to women who are not directly conflict-affected (78% versus 46%). (Page 6)',
@@ -133,10 +135,15 @@ const data = [
       percentage: 46,
       modifiers: [17, 17]
     }
-  }, {
-    id: 2,
+  }, */ 
+  {
+    id: 1,
     title: 'Perpetrators',
-    description: 'Serious incidents of non-partner violence connected to conflict are much more likely to be at the hands of multiple perpetrators, with the majority of incidents (55%) perpetrated by three or more people. This is eleven times more than the average of 5% across all victims of non-partner violence. (page 7)',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Incidents of conflict related non-partner violence are much more likely to be at the hands of multiple perpetrators, with a majority of incidents (55%) perpetrated by three or more people. This is eleven times more than the average of 5% across all victims of non-partner violence.',
     left: {
       percentage: 55,
       modifiers: [-16, -12]
@@ -150,9 +157,13 @@ const data = [
       }
     }
   }, {
-    id: 3,
+    id: 2,
     title: 'Perpetrators',
-    description: 'Perpetrators of the most serious incident of intimate partner or non-partner violence connected with conflict are not more likely to be drunk at the time of this incident, but victims of these incidents are more likely to say that the perpetrator was either under the influence of drugs (8% compared with 1% on average), or under the influence of both drugs and alcohol (15% compared with 2% on average). (page 7)',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Women who are directly conflict-affected and who associate their most serious incident of violence with conflict are more likely to say that the perpetrator was either under the influence of drugs (8% compared with 1% on average), or under the influence of both drugs and alcohol (15% compared with 2% on average).',
     left: {
       percentage: 15,
       modifiers: [18, 22]
@@ -162,9 +173,13 @@ const data = [
       modifiers: [-71, -71]
     }
   }, {
-    id: 4,
-    title: 'Severity of violance in conflict',
-    description: 'being pushed or shoved',
+    id: 3,
+    title: 'Severity of the most serious incidents of violence',
+    subheaders: {
+      left: 'Directly conflict affected women',
+      right: 'Not conflict affected women'
+    },
+    description: 'Being pushed or shoved.',
     left: {
       percentage: 34,
       modifiers: [1, 6]
@@ -174,9 +189,13 @@ const data = [
       modifiers: [5, 5]
     }
   }, {
-    id: 5,
-    title: 'Severity of violance in conflict',
-    description: 'having their head beaten against something',
+    id: 4,
+    title: 'Severity of the most serious incidents of violence',
+    subheaders: {
+      left: 'Directly conflict affected women',
+      right: 'Not conflict affected women'
+    },
+    description: 'Having their head beaten against something.',
     left: {
       percentage: 7,
       modifiers: [24, 29]
@@ -186,9 +205,13 @@ const data = [
       modifiers: [-67, -67]
     }
   }, {
-    id: 6,
-    title: 'Severity of violance in conflict',
-    description: 'being raped',
+    id: 5,
+    title: 'Severity of the most serious incidents of violence',
+    subheaders: {
+      left: 'Directly conflict affected women',
+      right: 'Not conflict affected women'
+    },
+    description: 'Being raped.',
     left: {
       percentage: 8,
       modifiers: [23, 28]
@@ -198,11 +221,15 @@ const data = [
       modifiers: [-63, -63]
     }
   }, {
-    id: 7,
-    title: 'Severity of violance in conflict',
-    description: 'being forced to partake in some form of sexual activity when they did not want to',
+    id: 6,
+    title: 'Severity of the most serious incidents of violence',
+    subheaders: {
+      left: 'Directly conflict affected women',
+      right: 'Not conflict affected women'
+    },
+    description: 'Made to take part in any form of sexual activity when they did not want to or were unable to refuse.',
     left: {
-      percentage: 6,
+      percentage: 5,
       modifiers: [23, 30]
     },
     right: {
@@ -210,9 +237,13 @@ const data = [
       modifiers: [-67, -67]
     }
   }, {
-    id: 8,
+    id: 7,
     title: 'Experiences of refugees, IDPS and returnees (use also quotes)',
-    description: 'refugees or displaced / being cut or stabbed, or shot',
+    subheaders: {
+      left: 'Directly conflict affected women',
+      right: 'Not conflict affected women'
+    },
+    description: 'Refugees or displaced persons: Being cut, stabbed, or shot at.',
     left: {
       percentage: 17,
       modifiers: [16, 20],
@@ -222,13 +253,17 @@ const data = [
       }
     },
     right: {
-      percentage: 2,
+      percentage: 1,
       modifiers: [-71, -71]
     }
   }, {
-    id: 9,
+    id: 8,
     title: 'Experiences of refugees, IDPS and returnees (use also quotes)',
-    description: 'returnees / being raped',
+    subheaders: {
+      left: 'Directly conflict affected women',
+      right: 'Not conflict affected women'
+    },
+    description: 'Returnees: Being raped.',
     left: {
       percentage: 21,
       modifiers: [12, 17]
@@ -242,9 +277,13 @@ const data = [
       }
     }
   }, {
-    id: 10,
-    title: 'Health effects of violance against women in clonflict',
-    description: 'suffering from a psychological impact',
+    id: 9,
+    title: 'Health consequences of violence against women',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Suffering from long-term psychological impact.',
     left: {
       percentage: 85,
       modifiers: [-42, -37]
@@ -254,21 +293,29 @@ const data = [
       modifiers: [87, 87]
     }
   }, {
-    id: 11,
-    title: 'Health effects of violance against women in clonflict',
-    description: 'depression',
+    id: 10,
+    title: 'Health consequences of violence against women',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Depression.',
     left: {
       percentage: 43,
       modifiers: [-6, -2]
     },
     right: {
-      percentage: 28,
+      percentage: 27,
       modifiers: [-19, -19]
     }
   }, {
-    id: 12,
-    title: 'Health effects of violance against women in clonflict',
-    description: 'anxiety',
+    id: 11,
+    title: 'Health consequences of violence against women',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Anxiety.',
     left: {
       percentage: 50,
       modifiers: [-12, -8]
@@ -278,9 +325,13 @@ const data = [
       modifiers: [3, 3]
     }
   }, {
-    id: 13,
-    title: 'Health effects of violance against women in clonflict',
-    description: 'loss of self-confidence',
+    id: 12,
+    title: 'Health consequences of violence against women',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Loss of self-confidence.',
     left: {
       percentage: 37,
       modifiers: [-1, 3]
@@ -290,9 +341,13 @@ const data = [
       modifiers: [-39, -39]
     }
   }, {
-    id: 14,
+    id: 13,
     title: 'Barriers to reporting, experiences of reporting and satisfaction with services',
-    description: 'However, where the most serious incident of violence was connected to conflict, victims of all perpetrator types are less likely than women overall to have reported the incident to the police (13% compared to 18% of all serious incidents). Page 8',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Where the most serious incident of violence was connected to conflict, victims of all perpetrator types are less likely than women overall to have reported the incident to the police.',
     left: {
       percentage: 13,
       modifiers: [19, 24],
@@ -306,15 +361,19 @@ const data = [
       modifiers: [-39, -39]
     }
   }, {
-    id: 15,
+    id: 14,
     title: 'Barriers to reporting, experiences of reporting and satisfaction with services',
-    description: 'the police would not do anything',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Reason for not reporting the most serious incident to police: belief that the police would not do anything.',
     left: {
-      percentage: 7,
+      percentage: 5,
       modifiers: [24, 29]
     },
     right: {
-      percentage: 16,
+      percentage: 15,
       modifiers: [-43, -43],
       tooltip: {
         position: 14,
@@ -322,9 +381,13 @@ const data = [
       }
     }
   }, {
-    id: 16,
+    id: 15,
     title: 'Barriers to reporting, experiences of reporting and satisfaction with services',
-    description: 'not wanting anyone to know about it',
+    subheaders: {
+      left: 'Conflict related incidents',
+      right: 'Not conflict related incidents'
+    },
+    description: 'Reason for not reporting the most serious incident to other services: not wanting anyone to know about it.',
     left: {
       percentage: 11,
       modifiers: [21, 26]
@@ -334,21 +397,13 @@ const data = [
       modifiers: [-39, -39]
     }
   }, {
-    id: 17,
-    title: 'Barriers to reporting, experiences of reporting and satisfaction with services',
-    description: 'Women who are directly affected by conflict are somewhat less likely to have spoken to anyone other than the police and other institutions about their most serious incident of violence, with 59% having done so, compared to 65% of non-conflict affected women. ',
-    left: {
-      percentage: 59,
-      modifiers: [-20, -15]
+    id: 16,
+    title: 'Partner fought in a conflict',
+    subheaders: {
+      left: 'Directly conflict affected women',
+      right: 'Not conflict affected women'
     },
-    right: {
-      percentage: 65,
-      modifiers: [55, 55]
-    }
-  }, {
-    id: 18,
-    title: 'Partner was involved in conflict',
-    description: 'intimate partner physical and/or sexual violence since the age of 15',
+    description: 'Intimate partner physical and/or sexual violence since the age of 15.',
     left: {
       percentage: 30,
       modifiers: [5, 9]
@@ -358,9 +413,13 @@ const data = [
       modifiers: [-31, -31]
     }
   }, {
-    id: 19,
-    title: 'Partner was involved in conflict',
-    description: 'Women whose current partner suffered from at least one psychological impact /  physical and/or sexual violence at their hands since the age of 15 ',
+    id: 17,
+    title: 'Partner fought in a conflict',
+    subheaders: {
+      left: 'Directly conflict affected women',
+      right: 'Not conflict affected women'
+    },
+    description: 'Women whose current partner suffered from at least one psychological impact due to fighting in a conflict: physical and/or sexual violence at their hands since the age of 15.',
     left: {
       percentage: 48,
       modifiers: [-10, -6]
@@ -370,22 +429,6 @@ const data = [
       modifiers: [-45, -45]
     }
   }
-  /* {
-    id: 3,
-    title: 'Lorem ipsum #4',
-    description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
-    video: 'Valentina_Andrasek.mp4',
-    left: {
-      percentage: 41,
-      tooltip: {
-        position: 36,
-        text: '<p>Men are allowed to do everything. They can go out whenever they want, they can just stay in betting shops and drink alcohol and smoke cigarettes.</p><p>Female, aged 36-55, urban, Albania</p>'
-      }
-    },
-    right: {
-      percentage: 3
-    }
-  } */
 ]
 
 function range (length) {
@@ -467,12 +510,15 @@ function paginate (isNext, page) {
   
   paginationButtons.forEach(button => button.classList.remove('active'))
   paginationButtons[currentPage].classList.add('active')
-
+  console.log({currentPage})
+  console.log({data})
   const selected = data[currentPage]
-  const {left, right} = selected
+  const {left, right, subheaders} = selected
 
   textTitle.innerHTML = selected.title
   textParagraph.innerHTML = selected.description
+  leftSubheader.innerHTML = subheaders.left
+  rightSubheader.innerHTML = subheaders.right
 
   const leftPositions = calculateRowsAndColumns(left.percentage)
   const rightPositions = calculateRowsAndColumns(right.percentage)
@@ -625,9 +671,8 @@ function showMapTooltip (country) {
   const tooltip = document.querySelector('.map-tooltip')
 
   tooltip.innerHTML = `
-  <p>${country.fullName}</p>
-  <p>female population: <strong>${country.all}</strong></p>
-  <p>conflict affected women: <strong>${country.affected}</strong></p>
+  <p>${country.fullName} female population: <strong>${country.all}</strong>;</p>
+  <p>directly conflict affected women: <strong>${country.affected}</strong></p>
   `
   const {x, y} = getMousePosition()
 
