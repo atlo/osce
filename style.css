@@ -572,7 +572,7 @@ text.text.active {
 
 .overlay-container {
   position: absolute;
-  top: 23%;
+  top: 21%;
   left: 0;
   right: 0;
   width: 100%;
@@ -603,7 +603,7 @@ text.text.active {
 }
 
 #atlo .overlay-container > ul > li {
-  margin-bottom: 10%;
+  margin-bottom: 8%;
 }
 
 #atlo .overlay-container > ul > li.no-margin-bottom {
@@ -611,7 +611,7 @@ text.text.active {
 }
 
 #atlo .overlay-container > ul > li.more-margin-bottom {
-  margin-bottom: 15%;
+  margin-bottom: 12%;
 }
 
 #atlo .overlay-container > ul > li.more2x-margin-bottom {
@@ -776,7 +776,7 @@ text.text.active {
   width: 930px;
   left: 50%;
   right: 50%;
-  transform: translate(-54%, 7.4%);
+  transform: translate(-54%, 8.5%);
   transition: opacity 2s;
 }
 
