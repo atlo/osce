@@ -949,9 +949,9 @@ text.text.active {
 #atlo .kosovo-footnote {
   position: absolute;
   z-index: 1;
-  top: 60px;
+  top: 90px;
   left: 30%;
-  width: 50%;
+  width: 40%;
   height: 0;
   min-width: 320px;
   background: white;
