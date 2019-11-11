@@ -225,7 +225,7 @@ const data = [
     }
   }, {
     id: 7,
-    title: 'Experiences of refugees, IDPS and returnees (use also quotes)',
+    title: 'Experiences of refugees, IDPS and returnees (most serious incidents)',
     subheaders: {
       left: 'Directly conflict affected women',
       right: 'Not conflict affected women'
@@ -245,7 +245,7 @@ const data = [
     }
   }, {
     id: 8,
-    title: 'Experiences of refugees, IDPS and returnees (use also quotes)',
+    title: 'Experiences of refugees, IDPS and returnees (most serious incidents)',
     subheaders: {
       left: 'Directly conflict affected women',
       right: 'Not conflict affected women'
