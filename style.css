@@ -941,3 +941,28 @@ text.text.active {
 .menu li:nth-of-type(6) {
   background: #00437b;
 }
+
+#atlo .kosovo {
+  position: relative;
+}
+
+#atlo .kosovo-footnote {
+  position: absolute;
+  z-index: 1;
+  top: 60px;
+  left: 30%;
+  width: 50%;
+  height: 0;
+  min-width: 320px;
+  background: white;
+  opacity: 0;
+  padding: 10px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+
+#atlo .kosovo-footnote.active {
+  height: auto !important;
+  opacity: 1 !important;
+}

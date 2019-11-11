@@ -28,6 +28,8 @@ const menu = document.querySelector('.menu')
 const overlayContainer = document.querySelector('.overlay-container')
 const leftSubheader = document.querySelector('.slider .left .subheader')
 const rightSubheader = document.querySelector('.slider .right .subheader')
+const kosovoSup = document.querySelector('.map-text sup')
+const kosovoFootnote = document.querySelector('.kosovo-footnote')
 
 const countries = [
   {
@@ -157,7 +159,7 @@ const data = [
     }
   }, {
     id: 3,
-    title: 'Severity of the most serious incidents of violence',
+    title: 'Severity of the most serious incidents of violence against women',
     subheaders: {
       left: 'Directly conflict affected women',
       right: 'Not conflict affected women'
@@ -173,7 +175,7 @@ const data = [
     }
   }, {
     id: 4,
-    title: 'Severity of the most serious incidents of violence',
+    title: 'Severity of the most serious incidents of violence against women',
     subheaders: {
       left: 'Directly conflict affected women',
       right: 'Not conflict affected women'
@@ -189,7 +191,7 @@ const data = [
     }
   }, {
     id: 5,
-    title: 'Severity of the most serious incidents of violence',
+    title: 'Severity of the most serious incidents of violence against women',
     subheaders: {
       left: 'Directly conflict affected women',
       right: 'Not conflict affected women'
@@ -205,7 +207,7 @@ const data = [
     }
   }, {
     id: 6,
-    title: 'Severity of the most serious incidents of violence',
+    title: 'Severity of the most serious incidents of violence against women',
     subheaders: {
       left: 'Directly conflict affected women',
       right: 'Not conflict affected women'
@@ -216,7 +218,7 @@ const data = [
       modifiers: [23, 30],
       tooltip: {
         position: 3,
-        text: '<p> think there was absolutely a different form of violence in war circumstances. There was no violence in the family, but outside of the home yes – rape in camps, physical violence by armed individuals, breaking in to houses, beatings, intimidation…</p><p>Female, 38-55, conflict-affected, Bosnia and Herzegovina</p>'
+        text: '<p>I think there was absolutely a different form of violence in war circumstances. There was no violence in the family, but outside of the home yes – rape in camps, physical violence by armed individuals, breaking in to houses, beatings, intimidation…</p><p>Female, 38-55, conflict-affected, Bosnia and Herzegovina</p>'
       }
     },
     right: {
@@ -703,4 +705,12 @@ iconButtons.forEach(function (button) {
       }
     }
   })
+})
+
+kosovoSup.addEventListener('mouseenter', function () {
+  kosovoFootnote.classList.add('active')
+})
+
+kosovoSup.addEventListener('mouseleave', function () {
+  kosovoFootnote.classList.remove('active')
 })
