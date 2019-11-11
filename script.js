@@ -118,24 +118,7 @@ const animationTime = 800
 
 let currentPage = 0
 
-const data = [
-  /* {
-    id: 1,
-    title: 'Perpetrators',
-    description: 'For women directly affected by conflict, the perpetrator of these assaults is much more likely to be someone other than an intimate partner compared to women who are not directly conflict-affected (78% versus 46%). (Page 6)',
-    left: {
-      percentage: 78,
-      modifiers: [-36, -31],
-      tooltip: {
-        position: 13,
-        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><p>Female, aged 36-55, urban, Albania</p>'
-      }
-    },
-    right: {
-      percentage: 46,
-      modifiers: [17, 17]
-    }
-  }, */ 
+const data = [ 
   {
     id: 1,
     title: 'Perpetrators',
@@ -146,15 +129,15 @@ const data = [
     description: 'Incidents of conflict related non-partner violence are much more likely to be at the hands of multiple perpetrators, with a majority of incidents (55%) perpetrated by three or more people. This is eleven times more than the average of 5% across all victims of non-partner violence.',
     left: {
       percentage: 55,
-      modifiers: [-16, -12]
+      modifiers: [-16, -12],
+      tooltip: {
+        position: 13,
+        text: '<p>I wanted to mention rape in camps during the war. I think in the war the violence was sexual, not by spouses but by the aggressor’s army over women in camps. And it happened often. Those who raped during the war, we know most of them are not judged, are rapists even today. For sure.</p><p>Female, aged 18-37, rural, Bosnia and Herzegovina</p>'
+      }
     },
     right: {
       percentage: 5,
-      modifiers: [-65, -65],
-      tooltip: {
-        position: 3,
-        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><p>Female, aged 36-55, urban, Albania</p>'
-      }
+      modifiers: [-65, -65]
     }
   }, {
     id: 2,
@@ -230,7 +213,11 @@ const data = [
     description: 'Made to take part in any form of sexual activity when they did not want to or were unable to refuse.',
     left: {
       percentage: 5,
-      modifiers: [23, 30]
+      modifiers: [23, 30],
+      tooltip: {
+        position: 3,
+        text: '<p> think there was absolutely a different form of violence in war circumstances. There was no violence in the family, but outside of the home yes – rape in camps, physical violence by armed individuals, breaking in to houses, beatings, intimidation…</p><p>Female, 38-55, conflict-affected, Bosnia and Herzegovina</p>'
+      }
     },
     right: {
       percentage: 4,
@@ -286,7 +273,11 @@ const data = [
     description: 'Suffering from long-term psychological impact.',
     left: {
       percentage: 85,
-      modifiers: [-42, -37]
+      modifiers: [-42, -37],
+      tooltip: {
+        position: 46,
+        text: '<p>I think the violence was sexual during the war. Not by spouses but by the aggressor’s army against women in camps, and it took place often.</p><p>Female, aged 18–37, rural, FBiH</p>'
+      }
     },
     right: {
       percentage: 81,
@@ -377,7 +368,7 @@ const data = [
       modifiers: [-43, -43],
       tooltip: {
         position: 14,
-        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><p>Female, aged 36-55, urban, Albania</p>'
+        text: '<p>I didn’t want my parents to feel ashamed. Besides, who would have believed me? At that time, there were no tests. And they always blamed the girl… There were two girls in the village, two older sisters who were very frequently raped by many [men]. And they were beaten and raped, and [everyone in the village would say that it was their fault]. And that’s it! It wasn’t the boys who were guilty.</p><p>Survivor of conflict-related and non-conflict-related violence, Moldovan</p>'
       }
     }
   }, {
@@ -426,7 +417,13 @@ const data = [
     },
     right: {
       percentage: 15,
-      modifiers: [-45, -45]
+      modifiers: [-45, -45],
+      tooltip: {
+        position: 9,
+        text: `<p>Here, people would say: "Come on, how could she report her husband to the
+        police? It's her husband. He is a man after all. Wasn't she ashamed? She has
+        three children."</p><p>Female, aged 38-55, conflict-affected, urban, Bosnia and Herzegovina</p>`
+      }
     }
   }
 ]
