@@ -235,11 +235,7 @@ const data = [
     description: 'Refugees or displaced persons: Being cut, stabbed, or shot at.',
     left: {
       percentage: 17,
-      modifiers: [16, 20],
-      tooltip: {
-        position: 13,
-        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><p>Female, aged 36-55, urban, Albania</p>'
-      }
+      modifiers: [16, 20]
     },
     right: {
       percentage: 1,
@@ -259,11 +255,7 @@ const data = [
     },
     right: {
       percentage: 6,
-      modifiers: [-63, -63],
-      tooltip: {
-        position: 3,
-        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><p>Female, aged 36-55, urban, Albania</p>'
-      }
+      modifiers: [-63, -63]
     }
   }, {
     id: 9,
@@ -343,11 +335,7 @@ const data = [
     description: 'Where the most serious incident of violence was connected to conflict, victims of all perpetrator types are less likely than women overall to have reported the incident to the police.',
     left: {
       percentage: 13,
-      modifiers: [19, 24],
-      tooltip: {
-        position: 9,
-        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p><p>Female, aged 36-55, urban, Albania</p>'
-      }
+      modifiers: [19, 24]
     },
     right: {
       percentage: 18,
