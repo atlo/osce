@@ -82,13 +82,15 @@ const countries = [
   }
 ]
 
+rivers.addEventListener('mouseleave', hideMapTooltip)
+
 countries
   .forEach(country => {
     Array
       .from(document.querySelectorAll(`.${country.name}.hover-tooltip`))
       .forEach(el => {
         el.addEventListener('mouseenter', e => showMapTooltip(country))
-        el.addEventListener('mouseleave', e => hideMapTooltip(country))
+        //el.addEventListener('mouseleave', e => hideMapTooltip(country))
       })
   })
 
@@ -587,6 +589,7 @@ videoModalCloseButton.addEventListener('click', hideVideoModal)
 
 paginationButtons.forEach(button => addEventListener('click', function (event) {
   const {value} = event.target
+
   if (value) {
     paginationButtons.forEach(button => button.classList.remove('active'))
     event.target.classList.add('active')
@@ -619,16 +622,16 @@ nextPage.addEventListener('click', function (event) {
         animateLines(Array.from(document.querySelectorAll('.first')))
 
         setTimeout(function () {
-          animateLines(Array.from(document.querySelectorAll('.second')),4)
-        }, 1500)
+          animateLines(Array.from(document.querySelectorAll('.second')), 4)
+        }, 1000)
 
         setTimeout(function () {
           overlayContainer.classList.add('active')
-        }, 2500)
+        }, 2000)
 
         setTimeout(function () {
-          animateLines(Array.from(document.querySelectorAll('.third')))
-        }, 5500)
+          animateLines(Array.from(document.querySelectorAll('.third')), 1.5)
+        }, 5000)
 
         document.removeEventListener('wheel', showRivers)
       })
@@ -636,13 +639,13 @@ nextPage.addEventListener('click', function (event) {
   }, 100)
 })
 
-function animateLines (elements, seconds = 1.5) {
+function animateLines (elements, seconds = 1) {
   elements.forEach(function (element) {
     element.classList.add('active')
     const length = element.getTotalLength()
 
-    element.style.strokeDasharray = element.getTotalLength()
-    element.style.strokeDashoffset = element.getTotalLength()
+    element.style.strokeDasharray = length  
+    element.style.strokeDashoffset = length 
     element.style.animation = `dash ${seconds}s linear forwards`
   })
 }
