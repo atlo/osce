@@ -517,7 +517,7 @@ function paginate (isNext, page) {
 
   leftNumber.innerHTML = `${selected.left.percentage}%`
   rightNumber.innerHTML = `${selected.right.percentage}%`
-  rightNumber.style.left = `calc(100% - ${rightNumber.offsetWidth}px)`
+  rightNumber.style.right = 0
 
 
   if (left.tooltip) {
