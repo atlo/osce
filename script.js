@@ -30,6 +30,7 @@ const leftSubheader = document.querySelector('.slider .left .subheader')
 const rightSubheader = document.querySelector('.slider .right .subheader')
 const kosovoSup = document.querySelector('.map-text sup')
 const kosovoFootnote = document.querySelector('.kosovo-footnote')
+const womenIcons = Array.from(document.querySelectorAll('.slider li div'))
 
 const countries = [
   {
@@ -473,6 +474,8 @@ function setHighlightedElements (group, {columns, rows}) {
 }
 
 function setToolTip (group, column, row) {
+  console.log('setToolTip')
+
   const activeIcon = document.querySelector(`.${group} li:nth-of-type(${column}) div:nth-of-type(${5 - row})`)
   activeIcon.classList.add('action')
   activeIcon.addEventListener('click', toggleTooltip)
@@ -499,8 +502,7 @@ function paginate (isNext, page) {
   
   paginationButtons.forEach(button => button.classList.remove('active'))
   paginationButtons[currentPage].classList.add('active')
-  console.log({currentPage})
-  console.log({data})
+  
   const selected = data[currentPage]
   const {left, right, subheaders} = selected
 
@@ -511,6 +513,14 @@ function paginate (isNext, page) {
 
   const leftPositions = calculateRowsAndColumns(left.percentage)
   const rightPositions = calculateRowsAndColumns(right.percentage)
+
+
+  womenIcons.forEach(function (icon) {
+    icon.classList.remove('action')
+    icon.removeEventListener('click', toggleTooltip)
+    icon.removeEventListener('mouseenter', showTooltip)
+    icon.removeEventListener('mouseleave', hideTooltip)
+  })
 
   setHighlightedElements('left', leftPositions)
   setHighlightedElements('right', rightPositions)
@@ -565,7 +575,7 @@ function hideTooltip (event) {
 function showVideoModal (event) {
   const button = event.target.parentElement
   const id = button.dataset.id || '1'
-
+  
   document.querySelector('.video-modal video').src = `videos/${id}.mov`
 
   videoModal.style.left = '0'
