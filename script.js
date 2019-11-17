@@ -575,8 +575,9 @@ function hideTooltip (event) {
 function showVideoModal (event) {
   const button = event.target.parentElement
   const id = button.dataset.id || '1'
-  
-  document.querySelector('.video-modal video').src = `videos/${id}.mov`
+  const extension = id === '3' ? '.mp4' : '.mov'
+
+  document.querySelector('.video-modal video').src = `videos/${id}${extension}`
 
   videoModal.style.left = '0'
   videoModal.style.opacity = 1
