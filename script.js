@@ -36,50 +36,50 @@ const countries = [
   {
     name: 'ukraine',
     fullName: 'Ukraine',
-    all: '14 998 738',
-    affected: '1 128 738'
+    all: '14.998.738',
+    affected: '1.128.738'
   },
   {
     name: 'moldova',
     fullName: 'Moldova',
-    all: '1 191 922',
-    affected: '89 272'
+    all: '1.191.922',
+    affected: '89.272'
   },
   {
     name: 'serbia',
     fullName: 'Serbia',
-    all: '2 657 994',
-    affected: '678 529'
+    all: '2.657.994',
+    affected: '678.529'
   },
   {
     name: 'kosovo',
     fullName: 'Kosovo',
-    all: '584 388',
-    affected: '428 129'
+    all: '584.388',
+    affected: '428.129'
   },
   {
     name: 'macedonia',
     fullName: 'North Macedonia',
-    all: '771 606',
-    affected: '143 641'
+    all: '771.606',
+    affected: '143.641'
   },
   {
     name: 'albania',
     fullName: 'Albania',
-    all: '1 038 287',
-    affected: '202 130'
+    all: '1.038.287',
+    affected: '202.130'
   },
   {
     name: 'montenegro',
     fullName: 'Montenegro',
-    all: '225 905',
-    affected: '23 344'
+    all: '225.905',
+    affected: '23.344'
   },
   {
     name: 'bosnia',
     fullName: 'Bosnia and Herzegovina',
-    all: '1 335 698',
-    affected: '858 665'
+    all: '1.335.698',
+    affected: '858.665'
   }
 ]
 
@@ -373,11 +373,11 @@ const data = [
     },
     description: 'Reason for not reporting the most serious incident to other services: not wanting anyone to know about it.',
     left: {
-      percentage: 11,
+      percentage: 21,
       modifiers: [21, 26]
     },
     right: {
-      percentage: 18,
+      percentage: 17,
       modifiers: [-39, -39]
     }
   }, {
