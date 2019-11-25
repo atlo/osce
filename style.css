@@ -529,7 +529,7 @@ body {
 
 .slider-container {
   position: relative;
-  margin-top: 300px;
+  margin-top: 100px;
 }
 
 .slider-container li {
@@ -570,18 +570,32 @@ text.text.active {
   opacity: 1;
 }
 
+.river-container {
+  position: relative;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto 12%;
+}
+
 .overlay-container {
   position: absolute;
-  top: 21%;
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  top: 33.5%;
   z-index: 2;
   opacity: 0;
   transition: opacity 2s;
+}
+
+.overlay-container.left {
+  left: 0;
+}
+
+.overlay-container.left.last,
+.overlay-container.right.last {
+  top: 92%;
+}
+
+.overlay-container.right {
+  right: 0;
 }
 
 .overlay-container.active {
@@ -602,30 +616,23 @@ text.text.active {
   text-align: center;
 }
 
-#atlo .overlay-container > ul > li {
-  margin-bottom: 8%;
+#atlo .overlay-container > li {
+  margin-bottom: 55.82%;
 }
 
-#atlo .overlay-container > ul > li.no-margin-bottom {
+#atlo .overlay-container > li.no-margin-bottom {
   margin-bottom: 0;
 }
 
-#atlo .overlay-container > ul > li.more-margin-bottom {
-  margin-bottom: 12%;
+#atlo .overlay-container > li.more-margin-bottom {
+  margin-bottom: 93.03%;
 }
 
-#atlo .overlay-container > ul > li.more2x-margin-bottom {
-  margin-bottom: 25%;
+#atlo .overlay-container > li.more2x-margin-bottom {
+  margin-bottom: 0;
 }
 
-.overlay-container > ul > li ul {
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: flex;
-  justify-content: space-between;
-}
-
-.overlay-container > ul > li li {
+.overlay-container > li {
   width: 215px;
 }
 

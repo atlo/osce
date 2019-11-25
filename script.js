@@ -25,7 +25,7 @@ const page2 = document.querySelector('#page-2')
 const rivers = document.querySelector('.rivers')
 const mapText = document.querySelector('.map-text')
 const menu = document.querySelector('.menu')
-const overlayContainer = document.querySelector('.overlay-container')
+const overlayContainers = Array.from(document.querySelectorAll('.overlay-container'))
 const leftSubheader = document.querySelector('.slider .left .subheader')
 const rightSubheader = document.querySelector('.slider .right .subheader')
 const kosovoSup = document.querySelector('.map-text sup')
@@ -80,6 +80,20 @@ const countries = [
     fullName: 'Bosnia and Herzegovina',
     all: '1.335.698',
     affected: '858.665'
+  },
+  {
+    name: 'all',
+    fullName: '',
+    all: {
+      affected: {
+        experienced: '2.247.498',
+        notExperienced: '1.304.950'
+      },
+      notAffected: {
+        experienced: '5.439.534',
+        notExperienced: '13.812.555'
+      }
+    }
   }
 ]
 
@@ -90,7 +104,7 @@ countries
     Array
       .from(document.querySelectorAll(`.${country.name}.hover-tooltip`))
       .forEach(el => {
-        el.addEventListener('mouseenter', e => showMapTooltip(country))
+        el.addEventListener('mouseenter', e => showMapTooltip(country, Array.from(el.classList)))
         //el.addEventListener('mouseleave', e => hideMapTooltip(country))
       })
   })
@@ -474,8 +488,6 @@ function setHighlightedElements (group, {columns, rows}) {
 }
 
 function setToolTip (group, column, row) {
-  console.log('setToolTip')
-
   const activeIcon = document.querySelector(`.${group} li:nth-of-type(${column}) div:nth-of-type(${5 - row})`)
   activeIcon.classList.add('action')
   activeIcon.addEventListener('click', toggleTooltip)
@@ -637,7 +649,7 @@ nextPage.addEventListener('click', function (event) {
         }, 1000)
 
         setTimeout(function () {
-          overlayContainer.classList.add('active')
+          overlayContainers.forEach(element => element.classList.add('active'))
         }, 2000)
 
         setTimeout(function () {
@@ -668,13 +680,30 @@ function getMousePosition () {
   }
 }
 
-function showMapTooltip (country) {
+function showMapTooltip (country, selectors) {
   const tooltip = document.querySelector('.map-tooltip')
+  
+  if (selectors.includes('all')) {
+    let text = ''
 
-  tooltip.innerHTML = `
-  <p>${country.fullName} female population: <strong>${country.all}</strong>;</p>
-  <p>directly conflict affected women: <strong>${country.affected}</strong></p>
-  `
+    if (selectors.includes('all-affected-experienced')) {
+      text= `All conflict affected women experienced violence: <strong>${country.all.affected.experienced}</strong>`
+    } else if (selectors.includes('all-affected-not-experienced')) {
+      text= `All conflict affected women not experienced violence:  <strong>${country.all.affected.experienced}</strong>`
+    } else if (selectors.includes('all-not-affected-experienced')) {
+      text= `All not conflict affected women experienced violence:  <strong>${country.all.notAffected.experienced}</strong>`
+    } else {
+      text= `All not conflict affected women not experienced violence:  <strong>${country.all.notAffected.notExperienced}</strong>`
+    }
+
+    tooltip.innerHTML = text
+  } else {
+    tooltip.innerHTML = `
+    <p>${country.fullName} female population: <strong>${country.all}</strong>;</p>
+    <p>directly conflict affected women: <strong>${country.affected}</strong></p>
+    `
+  }
+
   const {x, y} = getMousePosition()
 
   tooltip.style.top = y + 'px'
