@@ -981,3 +981,100 @@ text.text.active {
   height: auto !important;
   opacity: 1 !important;
 }
+
+#atlo .percentage.mobile {
+  display: none;
+}
+
+@media (max-width: 999px) {
+  #atlo .container {
+    width: 90%;
+  }
+
+  #atlo .map {
+    width: 152%;
+  }
+
+  #atlo #page-2 .rivers {
+    width: 82%;
+    transform: translate(-51.5%, 6%);
+  }
+
+  #atlo .overlay-container {
+    display: none;
+  }
+
+  #atlo .menu,
+  #atlo .container.map-text {
+    position: relative;
+  }
+
+  #atlo .content-text {
+    display: inline-block;
+    height: 350px;
+    margin-bottom: 0;
+  }
+
+  #atlo .menu li a {
+    text-align: left;
+  }
+
+  #atlo .slider-container {
+    margin-top: 0;
+  }
+
+  #atlo .slider li svg {
+    width: 12px;
+    height: 24px;
+  }
+
+  #atlo .slider > div {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  #atlo .pagination-pages {
+    display: none;
+  }
+
+  #atlo .percentage {
+    display: none;
+  }
+
+  #atlo .percentage.mobile {
+    position: relative;
+    display: inline-block;
+    bottom: 0;
+  }
+
+  #atlo .tooltip-text {
+    padding: 10px;
+  }
+
+  #atlo .hero-foreground {
+    padding-bottom: 50px;
+  }
+
+  #atlo .tooltip::before {
+    display: none;
+  }
+
+  #atlo .tooltip-text p {
+    margin-bottom: 10px;
+  }
+
+  #atlo .tooltip-text p:first-of-type {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.5;
+    padding: 0 0 0 25px;
+  }
+
+  #atlo .tooltip-text p:first-of-type:before {
+    left: 0;
+  }
+
+  #atlo .next-page-tooltip {
+    display: none;
+  }
+}

@@ -9,8 +9,8 @@ const tooltipText = document.querySelector('.tooltip-text')
 const textTitle = document.querySelector('.content-text h2')
 const textParagraph = document.querySelector('.content-text p')
 const video = document.querySelector('video')
-const leftNumber = document.querySelector('.left-number')
-const rightNumber = document.querySelector('.right-number')
+const leftNumber = Array.from(document.querySelectorAll('.left-number'))
+const rightNumber = Array.from(document.querySelectorAll('.right-number'))
 const leftRiver = Array.from(document.querySelectorAll('.left'))
 const left2River = Array.from(document.querySelectorAll('.left-2'))
 const rightRiver = Array.from(document.querySelectorAll('.right'))
@@ -537,10 +537,9 @@ function paginate (isNext, page) {
   setHighlightedElements('left', leftPositions)
   setHighlightedElements('right', rightPositions)
 
-  leftNumber.innerHTML = `${selected.left.percentage}%`
-  rightNumber.innerHTML = `${selected.right.percentage}%`
-  rightNumber.style.right = 0
-
+  leftNumber.forEach(element => element.innerHTML = `${selected.left.percentage}%`)
+  rightNumber.forEach(element => element.innerHTML = `${selected.right.percentage}%`)
+  rightNumber.forEach(element => element.style.right = 0)
 
   if (left.tooltip) {
     const {columns, rows} = calculateRowsAndColumns(left.tooltip.position)
@@ -560,7 +559,26 @@ function paginate (isNext, page) {
 function toggleTooltip (event) {
   event.stopPropagation()
 
-  tooltip.classList.toggle('active')
+  const {x, y} = getMousePosition()
+  
+  tooltip.style.top = y + 45 + 'px'
+
+  if (tooltip.classList.contains('active')) {
+    tooltip.classList.remove('active')
+
+    tooltip.style.left = -9999 + 'px'
+    tooltip.style.opacity = 0
+  } else {
+    tooltip.classList.add('active')
+
+    tooltip.style.opacity = 1
+
+    if (window.innerWidth < 1000) {
+      tooltip.style.left = 0 + 'px'
+    } else {
+      tooltip.style.left = x - 110 + 'px'
+    }
+  }
 }
 
 function showTooltip (event) {
@@ -569,7 +587,13 @@ function showTooltip (event) {
   const {x, y} = getMousePosition()
   
   tooltip.style.top = y + 45 + 'px'
-  tooltip.style.left = x - 110 + 'px'
+  
+  if (window.innerWidth < 1000) {
+    tooltip.style.left = 0 + 'px'
+  } else {
+    tooltip.style.left = x - 110 + 'px'
+  }
+
   tooltip.style.opacity = 1
 }
 
