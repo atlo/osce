@@ -649,6 +649,24 @@ function showNextPage () {
 
 }
 
+function showRivers () {
+  animateLines(Array.from(document.querySelectorAll('.first')))
+
+  setTimeout(function () {
+    animateLines(Array.from(document.querySelectorAll('.second')), 4)
+  }, 1000)
+
+  setTimeout(function () {
+    overlayContainers.forEach(element => element.classList.add('active'))
+  }, 2000)
+
+  setTimeout(function () {
+    animateLines(Array.from(document.querySelectorAll('.third')), 1.5)
+  }, 5000)
+
+  document.removeEventListener('wheel', showRivers)
+}
+
 nextPage.addEventListener('click', function (event) {
   event.preventDefault()
 
@@ -665,23 +683,12 @@ nextPage.addEventListener('click', function (event) {
       mapText.classList.add('active')
       menu.classList.add('active')
 
-      document.addEventListener('wheel', function showRivers () {
-        animateLines(Array.from(document.querySelectorAll('.first')))
+      if (window.innerWidth < 1000) {
+        document.addEventListener('scroll', showRivers)
+      } else {
+        document.addEventListener('wheel', showRivers)
+      }
 
-        setTimeout(function () {
-          animateLines(Array.from(document.querySelectorAll('.second')), 4)
-        }, 1000)
-
-        setTimeout(function () {
-          overlayContainers.forEach(element => element.classList.add('active'))
-        }, 2000)
-
-        setTimeout(function () {
-          animateLines(Array.from(document.querySelectorAll('.third')), 1.5)
-        }, 5000)
-
-        document.removeEventListener('wheel', showRivers)
-      })
     }, 500)
   }, 100)
 })
