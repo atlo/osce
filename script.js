@@ -608,12 +608,14 @@ function hideTooltip (event) {
   }, 300)
 }
 
+const video = document.querySelector('.video-modal video')
+
 function showVideoModal (event) {
   const button = event.target.parentElement
   const id = button.dataset.id || '1'
   const extension = id === '3' ? '.mp4' : '.mov'
 
-  document.querySelector('.video-modal video').src = `videos/${id}${extension}`
+  video.src = `videos/${id}${extension}`
 
   videoModal.style.left = '0'
   videoModal.style.opacity = 1
@@ -621,6 +623,8 @@ function showVideoModal (event) {
 
 function hideVideoModal (event) {
   videoModal.style.opacity = 0
+
+  video.pause()
 
   setTimeout(function () {
     videoModal.style.left = '-9999px'
