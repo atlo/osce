@@ -608,8 +608,6 @@ function hideTooltip (event) {
   }, 300)
 }
 
-const video = document.querySelector('.video-modal video')
-
 function showVideoModal (event) {
   const button = event.target.parentElement
   const id = button.dataset.id || '1'
